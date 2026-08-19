@@ -1,0 +1,4 @@
+import type { Metadata } from "next";
+import { PageHero } from "@/components/PageHero";
+export const metadata: Metadata = { title:"개인정보처리방침", description:"거상커머스 개인정보처리방침", alternates:{canonical:"/privacy"} };
+export default function PrivacyPage(){ return <main><PageHero eyebrow="POLICY" title="개인정보처리방침" description="실제 접수 기능 운영 전 수집 항목, 보유 기간과 처리 위탁 현황을 확정해 반영합니다."/><article className="shell legal section-gap"><h2>1. 수집하는 개인정보</h2><p>인플루언서 지원 및 브랜드 상담 과정에서 이름, 연락처, 이메일, 채널 또는 회사 정보, 문의 내용을 수집할 수 있습니다.</p><h2>2. 이용 목적</h2><p>지원자 또는 상담 신청자의 신원 확인, 캠페인 적합성 검토, 문의 답변과 후속 연락을 위해 이용합니다.</p><h2>3. 보유 및 이용 기간</h2><p>실제 접수 기능이 연결되기 전까지 이 홈페이지에서 개인정보를 저장하지 않습니다. 운영 정책과 관련 법령 검토 후 정확한 기간을 고지합니다.</p><h2>4. 운영 주체</h2><p>거상커머스는 거상마케팅센터가 운영합니다. 개인정보 문의 창구는 실제 접수 기능과 함께 공식 정보로 안내합니다.</p></article></main> }

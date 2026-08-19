@@ -1,0 +1,2 @@
+import Link from "next/link";
+export function CTASection({ eyebrow, title, description, href, label, tone = "gradient" }: { eyebrow?: string; title: string; description: string; href: string; label: string; tone?: "gradient" | "gold" }) { return <section className={`cta-section ${tone}`}><div>{eyebrow && <span>{eyebrow}</span>}<h2>{title}</h2><p>{description}</p></div><Link href={href} className="white-button">{label} <b>→</b></Link></section>; }

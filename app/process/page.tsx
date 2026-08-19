@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import { CTASection } from "@/components/CTASection";
+import { PageHero } from "@/components/PageHero";
+import { ProcessTimeline } from "@/components/ProcessTimeline";
+export const metadata: Metadata = { title:"진행 방법", description:"인플루언서 공동구매 지원부터 상품 매칭, 콘텐츠 제작, 판매와 정산까지의 진행 과정", alternates:{canonical:"/process"} };
+export default function ProcessPage(){ return <main><PageHero eyebrow="PROCESS" title="서로의 역할이 명확한 공동구매 운영" description="브랜드, 거상커머스, 인플루언서가 각자의 전문 영역에 집중할 수 있도록 과정을 설계합니다."/><section className="shell section-gap"><ProcessTimeline/></section><section className="soft-section section-gap"><div className="shell"><div className="center-head"><span className="eyebrow">ROLES</span><h2>각자의 역할</h2></div><div className="role-grid">{[["브랜드·공급사","상품 공급, 재고 관리, 택배 발송"],["거상커머스","상품 발굴, 인플루언서 모집, 캠페인 운영, 중계 및 정산 관리"],["인플루언서","콘텐츠 제작과 팔로워 대상 판매"],["소비자","인플루언서 콘텐츠를 통해 상품 구매"]].map(([title,desc],i)=><article key={title}><span>0{i+1}</span><h3>{title}</h3><p>{desc}</p></article>)}</div></div></section><div className="shell cta-stack section-gap"><CTASection title="인플루언서로 참여하고 싶다면" description="현재 제안 가능한 캠페인을 확인하고 지원해 주세요." href="/creators#apply" label="인플루언서 지원"/><CTASection tone="gold" title="브랜드로 참여하고 싶다면" description="상품과 공급 조건을 보내 주시면 캠페인 가능성을 검토합니다." href="/brands#inquiry" label="브랜드 상담"/></div></main> }
