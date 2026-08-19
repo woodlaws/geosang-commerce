@@ -5,7 +5,7 @@ import { Campaign, discountRate, won } from "@/data/campaigns";
 export function CampaignCard({ campaign }: { campaign: Campaign }) {
   const lead = campaign.variants[0];
   return <article className="campaign-card">
-    <div className={`campaign-image ${campaign.image ? "" : "placeholder"}`}>
+    <div className={`campaign-image ${campaign.image ? campaign.imageTreatment || "product" : "placeholder"}`}>
       <span className={`status ${campaign.status === "모집 중" ? "live" : "ready"}`}>{campaign.status}</span>
       {campaign.image ? <Image src={campaign.image} alt={campaign.imageAlt || campaign.name} width={680} height={560} className="contain-image" /> : <div className="placeholder-art"><span>Q</span><strong>QUIRKIES</strong><small>상품 이미지 준비 중</small></div>}
     </div>

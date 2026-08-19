@@ -14,6 +14,7 @@ export type Campaign = {
   status: CampaignStatus;
   image?: string;
   imageAlt?: string;
+  imageTreatment?: "product" | "editorial";
   shipping: "무료배송" | "배송비 별도";
   variants: CampaignVariant[];
   features: string[];
@@ -88,6 +89,9 @@ export const campaigns: Campaign[] = [
     name,
     category: "식품" as const,
     status: "준비 중" as const,
+    image: "/products/quirkies-macadamia.png",
+    imageAlt: "쿼키즈 마카다미아 바닐라 로스티드와 드라이 로스티드 패키지",
+    imageTreatment: "editorial" as const,
     shipping: "무료배송" as const,
     variants: [
       { composition, regularPrice: 75000, offerPrice: 44900 },
