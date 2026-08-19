@@ -12,17 +12,19 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: { default: "GEOSANG CREATOR COMMERCE", template: "%s | GEOSANG CREATOR COMMERCE" },
+  title: { default: "거상커머스 | 인플루언서 공동구매 플랫폼", template: "%s | 거상커머스" },
   description: siteConfig.description,
   keywords: ["인플루언서 공동구매", "공동구매 플랫폼", "브랜드 공동구매 입점", "공동구매 대행", "인플루언서 마케팅", "거상마케팅센터"],
   alternates: { canonical: "/" },
-  openGraph: { title: siteConfig.name, description: siteConfig.description, url: "/", siteName: siteConfig.name, locale: "ko_KR", type: "website", images: [{ url: "/og.png", width: 1200, height: 630, alt: "GEOSANG CREATOR COMMERCE" }] },
-  twitter: { card: "summary_large_image", title: siteConfig.name, description: siteConfig.description, images: ["/og.png"] },
+  openGraph: { title: "거상커머스 | 인플루언서 공동구매 플랫폼", description: siteConfig.description, url: "/", siteName: siteConfig.name, locale: "ko_KR", type: "website", images: [{ url: "/og.png", width: 1200, height: 630, alt: "거상커머스 · GEOSANG COMMERCE" }] },
+  twitter: { card: "summary_large_image", title: "거상커머스 | 인플루언서 공동구매 플랫폼", description: siteConfig.description, images: ["/og.png"] },
   robots: { index: true, follow: true },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: [{ url: siteConfig.logo, type: "image/png" }],
+    shortcut: siteConfig.logo,
+    apple: [{ url: siteConfig.logo, type: "image/png" }],
   },
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({
@@ -33,7 +35,7 @@ export default function RootLayout({
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", "@id": `${siteConfig.url}/#organization`, name: "거상마케팅센터", url: siteConfig.url },
+      { "@type": "Organization", "@id": `${siteConfig.url}/#organization`, name: siteConfig.name, alternateName: siteConfig.englishName, description: siteConfig.serviceDescription, url: siteConfig.url, logo: new URL(siteConfig.logo, siteConfig.url).toString(), parentOrganization: { "@type": "Organization", name: "거상마케팅센터" } },
       { "@type": "WebSite", "@id": `${siteConfig.url}/#website`, name: siteConfig.name, url: siteConfig.url, publisher: { "@id": `${siteConfig.url}/#organization` }, inLanguage: "ko-KR" },
     ],
   };

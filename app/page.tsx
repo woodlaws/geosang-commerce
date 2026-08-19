@@ -11,10 +11,10 @@ export default function Home() {
     <main>
       <section className="hero shell">
         <div className="hero-copy">
-          <span className="eyebrow">CREATOR COMMERCE PLATFORM</span>
+          <span className="eyebrow">브랜드와 인플루언서를 연결하는 공동구매 플랫폼</span>
           <h1><em>좋은 제품,</em><br/><em>영향력 있는 콘텐츠,</em><br/>함께 만드는 매출</h1>
-          <p>콘텐츠에 집중하세요. 상품 공급·배송·운영은 거상마케팅센터가 지원합니다.</p>
-          <div className="hero-actions"><Link href="/creators" className="gradient-button">공동구매 제안받기</Link><Link href="/brands" className="outline-button">브랜드 입점 문의</Link></div>
+          <p>인플루언서는 콘텐츠에 집중하세요. 상품 공급·배송·캠페인 운영은 거상커머스가 지원합니다.</p>
+          <div className="hero-actions"><Link href="/creators#apply" className="gradient-button">공동구매 제안받기</Link><Link href="/brands#inquiry" className="outline-button">브랜드 입점 문의</Link></div>
         </div>
         <div className="hero-visual" aria-label="현재 제안 가능한 상품">
           <div className="glow" />
@@ -23,7 +23,7 @@ export default function Home() {
         </div>
       </section>
       <section className="benefit-strip shell section-gap">
-        {[ ["↗", "높은 수익 기회", "콘텐츠 영향력을 실제 판매 수익으로 연결할 수 있습니다."], ["□", "재고 부담 없음", "상품 공급부터 배송까지 운영사가 지원합니다."], ["◇", "무료배송·운영 지원", "운영 부담을 줄여 콘텐츠에 집중할 수 있습니다."] ].map(([icon,title,desc]) => <article key={title}><span>{icon}</span><h3>{title}</h3><p>{desc}</p></article>)}
+        {[ ["↗", "높은 수익 기회", "콘텐츠 영향력을 실제 판매 수익으로 연결할 수 있습니다."], ["□", "재고 부담 없음", "상품 공급과 배송 조건 협의를 지원합니다."], ["◇", "무료배송·운영 지원", "운영 부담을 줄여 콘텐츠에 집중할 수 있습니다."] ].map(([icon,title,desc]) => <article key={title}><span>{icon}</span><h3>{title}</h3><p>{desc}</p></article>)}
       </section>
       <section className="shell section-gap"><div className="section-head"><div><span className="eyebrow">OPEN CAMPAIGNS</span><h2>지금 제안 가능한 캠페인</h2></div><Link href="/campaigns">전체 보기 →</Link></div><div className="campaign-grid home-grid">{campaigns.filter((item) => ["manuka-royal-jelly-mgo-300", "gooday-propolis-spray", "quokkies-macadamia"].includes(item.slug)).map((item) => <CampaignCard campaign={item} key={item.slug} />)}</div></section>
       <section className="soft-section section-gap"><div className="shell"><div className="center-head"><span className="eyebrow">CREATOR BENEFITS</span><h2>콘텐츠에 집중할 수 있는 이유</h2><p>상품 검토부터 배송과 정산 안내까지, 캠페인 운영의 복잡한 과정을 함께합니다.</p></div><div className="feature-grid">{["검토된 공동구매 상품", "재고 부담 없는 진행", "공급·배송 운영 지원", "콘텐츠 기획 자료 제공", "판매 현황 확인 지원", "체계적인 정산 안내"].map((item,index) => <article key={item}><span>{String(index+1).padStart(2,"0")}</span><strong>{item}</strong></article>)}</div></div></section>

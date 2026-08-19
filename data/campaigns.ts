@@ -100,7 +100,7 @@ export const campaigns: Campaign[] = [
       { name: "바닐라 로스티드", description: "초록색 패키지의 바닐라 로스티드 마카다미아" },
       { name: "드라이 로스티드", description: "주황색 패키지의 드라이 로스티드 마카다미아" },
     ],
-    seoTitle: "쿼키즈 마카다미아 공동구매 인플루언서 모집 | 거상 크리에이터 커머스",
+    seoTitle: "쿼키즈 마카다미아 공동구매 인플루언서 모집 | 거상커머스",
     seoDescription: "호주 쿼키즈 마카다미아 바닐라 로스티드와 드라이 로스티드 공동구매를 진행할 인플루언서를 모집합니다. 상품 공급과 무료배송, 캠페인 운영을 지원합니다.",
     shipping: "무료배송",
     variants: [
