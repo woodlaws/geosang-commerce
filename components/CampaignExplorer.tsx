@@ -9,7 +9,8 @@ export function CampaignExplorer() {
   const visible = useMemo(() => campaigns.filter((item) => {
     const filterMatch = filter === "전체" || item.category === filter || item.status === filter;
     const term = search.trim().toLowerCase();
-    return filterMatch && (!term || `${item.brand} ${item.name}`.toLowerCase().includes(term));
+    const searchable = `${item.brand} ${item.name} ${(item.searchKeywords || []).join(" ")}`.toLowerCase();
+    return filterMatch && (!term || searchable.includes(term));
   }), [filter, search]);
   return <>
     <div className="filter-panel"><label className="search"><span>검색</span><input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="브랜드명 또는 상품명" /></label><div className="filter-chips" aria-label="캠페인 필터">{categoryFilters.map((item) => <button type="button" key={item} className={filter === item ? "active" : ""} onClick={() => setFilter(item)}>{item}</button>)}</div></div>

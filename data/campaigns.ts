@@ -1,8 +1,9 @@
-export type CampaignStatus = "모집 중" | "준비 중" | "종료";
+export type CampaignStatus = "모집 중" | "제안 가능" | "준비 중" | "종료";
 
 export type CampaignVariant = {
   composition: string;
   regularPrice: number;
+  onlineLowestPrice?: number;
   offerPrice: number;
 };
 
@@ -15,6 +16,11 @@ export type Campaign = {
   image?: string;
   imageAlt?: string;
   imageTreatment?: "product" | "editorial";
+  origin?: string;
+  searchKeywords?: string[];
+  flavors?: { name: string; description: string }[];
+  seoTitle?: string;
+  seoDescription?: string;
   shipping: "무료배송" | "배송비 별도";
   variants: CampaignVariant[];
   features: string[];
@@ -79,31 +85,39 @@ export const campaigns: Campaign[] = [
     contentFields: ["라이프스타일", "여행·휴대 아이템", "선물 추천"],
     creatorTypes: ["일상 속 제품 활용을 보여주는 크리에이터", "간결한 숏폼 제품 소개에 강한 크리에이터"],
   },
-  ...[
-    ["quirkies-vanilla-roasted", "쿼키즈 마카다미아 바닐라 로스티드", "120g × 6개"],
-    ["quirkies-dry-roasted", "쿼키즈 마카다미아 드라이 로스티드", "120g × 6개"],
-    ["quirkies-mixed", "쿼키즈 마카다미아 혼합 구성", "바닐라 3개 + 드라이 3개"],
-  ].map(([slug, name, composition]) => ({
-    slug,
-    brand: "QUIRKIES",
-    name,
-    category: "식품" as const,
-    status: "준비 중" as const,
-    image: "/products/quirkies-macadamia.png",
+  {
+    slug: "quokkies-macadamia",
+    brand: "QUOKKIES",
+    name: "쿼키즈 마카다미아",
+    category: "식품",
+    status: "제안 가능",
+    origin: "호주",
+    image: "/products/quokkies-macadamia.png",
     imageAlt: "쿼키즈 마카다미아 바닐라 로스티드와 드라이 로스티드 패키지",
-    imageTreatment: "editorial" as const,
-    shipping: "무료배송" as const,
-    variants: [
-      { composition, regularPrice: 75000, offerPrice: 44900 },
-      { composition: name.includes("혼합") ? "바닐라 5개 + 드라이 5개" : "120g × 10개", regularPrice: 125000, offerPrice: 69500 },
+    imageTreatment: "editorial",
+    searchKeywords: ["쿼키즈", "마카다미아", "바닐라", "드라이", "바닐라 로스티드", "드라이 로스티드", "호주", "간식"],
+    flavors: [
+      { name: "바닐라 로스티드", description: "초록색 패키지의 바닐라 로스티드 마카다미아" },
+      { name: "드라이 로스티드", description: "주황색 패키지의 드라이 로스티드 마카다미아" },
     ],
-    features: ["120g 단위 구성", "6개·10개 구성 선택 가능", "무료배송"],
-    contentFields: ["간식 리뷰", "홈카페", "푸드 라이프"],
-    creatorTypes: ["식품과 간식 콘텐츠를 만드는 크리에이터", "사진과 숏폼으로 제품 질감을 잘 전달하는 크리에이터"],
-  })),
+    seoTitle: "쿼키즈 마카다미아 공동구매 인플루언서 모집 | 거상 크리에이터 커머스",
+    seoDescription: "호주 쿼키즈 마카다미아 바닐라 로스티드와 드라이 로스티드 공동구매를 진행할 인플루언서를 모집합니다. 상품 공급과 무료배송, 캠페인 운영을 지원합니다.",
+    shipping: "무료배송",
+    variants: [
+      { composition: "바닐라 로스티드 120g × 6개", regularPrice: 75000, onlineLowestPrice: 54900, offerPrice: 44900 },
+      { composition: "드라이 로스티드 120g × 6개", regularPrice: 75000, onlineLowestPrice: 54900, offerPrice: 44900 },
+      { composition: "바닐라 3개 + 드라이 3개 혼합", regularPrice: 75000, onlineLowestPrice: 54900, offerPrice: 44900 },
+      { composition: "바닐라 로스티드 120g × 10개", regularPrice: 125000, onlineLowestPrice: 86000, offerPrice: 69500 },
+      { composition: "드라이 로스티드 120g × 10개", regularPrice: 125000, onlineLowestPrice: 86000, offerPrice: 69500 },
+      { composition: "바닐라 5개 + 드라이 5개 혼합", regularPrice: 125000, onlineLowestPrice: 86000, offerPrice: 69500 },
+    ],
+    features: ["바닐라·드라이 2종", "120g 개별 패키지", "6개·10개 구성 선택 가능", "호주 원산지", "무료배송"],
+    contentFields: ["간식·먹방", "육아·가족", "홈카페", "캠핑·여행", "호주 상품", "건강한 라이프스타일", "직장인 간식"],
+    creatorTypes: ["간식·먹방·홈카페 콘텐츠를 만드는 크리에이터", "가족 일상, 캠핑·여행, 직장인 라이프를 다루는 크리에이터", "호주 상품을 자연스럽게 소개할 수 있는 크리에이터"],
+  },
 ];
 
-export const categoryFilters = ["전체", "건강식품", "식품", "뷰티", "생활용품", "모집 중", "준비 중", "종료"] as const;
+export const categoryFilters = ["전체", "건강식품", "식품", "뷰티", "생활용품", "모집 중", "제안 가능", "준비 중", "종료"] as const;
 
 export const won = (value: number) => `${value.toLocaleString("ko-KR")}원`;
 export const discountRate = (regularPrice: number, offerPrice: number) => Math.round((1 - offerPrice / regularPrice) * 100);
