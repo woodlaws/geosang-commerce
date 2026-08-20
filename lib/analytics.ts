@@ -7,7 +7,14 @@ export type AnalyticsEvent =
   | "submit_creator_form"
   | "start_brand_form"
   | "submit_brand_form"
-  | "form_submit_error";
+  | "form_submit_error"
+  | "view_creator_page"
+  | "start_creator_application"
+  | "complete_creator_step_1"
+  | "complete_creator_step_2"
+  | "select_creator_campaign"
+  | "submit_creator_application"
+  | "creator_application_error";
 
 export function trackEvent(event: AnalyticsEvent, parameters: Record<string, string | number | boolean> = {}) {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
