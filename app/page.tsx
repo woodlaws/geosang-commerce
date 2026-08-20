@@ -5,6 +5,7 @@ import { CTASection } from "@/components/CTASection";
 import { ProcessTimeline } from "@/components/ProcessTimeline";
 import { campaigns } from "@/data/campaigns";
 import { team } from "@/data/site";
+import { TrackedLink } from "@/components/TrackedLink";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
           <span className="eyebrow">브랜드와 인플루언서를 연결하는 공동구매 플랫폼</span>
           <h1><em>좋은 제품,</em><br/><em>영향력 있는 콘텐츠,</em><br/>함께 만드는 매출</h1>
           <p>인플루언서는 콘텐츠에 집중하세요. 상품 공급·배송·캠페인 운영은 거상커머스가 지원합니다.</p>
-          <div className="hero-actions"><Link href="/creators#apply" className="gradient-button">공동구매 제안받기</Link><Link href="/brands#inquiry" className="outline-button">브랜드 입점 문의</Link></div>
+          <div className="hero-actions"><TrackedLink href="/creators#apply" analyticsEvent="click_creator_apply" className="gradient-button">공동구매 제안받기</TrackedLink><TrackedLink href="/brands#inquiry" analyticsEvent="click_brand_inquiry" className="outline-button">브랜드 입점 문의</TrackedLink></div>
         </div>
         <div className="hero-visual" aria-label="현재 제안 가능한 상품">
           <div className="glow" />

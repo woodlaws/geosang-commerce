@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { CTASection } from "@/components/CTASection";
-import { PageHero } from "@/components/PageHero";
-export const metadata: Metadata = { title:"성공사례", description:"거상커머스 공동구매 캠페인 준비 및 상품·콘텐츠 협업 프로세스", alternates:{canonical:"/cases"} };
-export default function CasesPage(){ return <main><PageHero eyebrow="CASES" title="검증된 숫자만 투명하게 공개하겠습니다" description="현재 첫 캠페인을 준비하고 있습니다. 가상의 매출이나 후기를 만들지 않고 실제 결과가 쌓이는 대로 업데이트합니다."/><section className="shell section-gap"><div className="case-grid">{[["캠페인 준비 사례","상품의 판매 구성과 공동구매 제안 조건을 정리합니다."],["상품 기획 사례","브랜드가 가진 강점과 크리에이터의 콘텐츠 문법을 연결합니다."],["콘텐츠 협업 프로세스","표현 가이드와 일정, 제공 자료를 합의해 캠페인을 준비합니다."]].map(([title,desc],i)=><article key={title}><span>PREPARING · 0{i+1}</span><h2>{title}</h2><p>{desc}</p><small>첫 캠페인 진행 후 실제 사례 공개 예정</small></article>)}</div></section><section className="soft-section section-gap"><div className="shell"><div className="center-head"><span className="eyebrow">FUTURE METRICS</span><h2>실제 데이터가 생기면 공개할 항목</h2><p>매출, 주문 수, 콘텐츠 조회수, 전환율을 검증 가능한 범위에서 사례 카드에 추가합니다.</p></div><div className="metric-placeholders">{["매출","주문 수","콘텐츠 조회수","전환율"].map(x=><div key={x}><strong>—</strong><span>{x}</span></div>)}</div></div></section><div className="shell cta-stack section-gap"><CTASection title="브랜드의 첫 사례를 함께 만들고 싶다면" description="상품과 공급 조건을 보내 주세요." href="/brands#inquiry" label="브랜드 상담"/><CTASection tone="gold" title="콘텐츠로 첫 캠페인에 참여하고 싶다면" description="현재 모집 상품을 확인해 주세요." href="/creators#apply" label="인플루언서 지원"/></div></main> }
+import { permanentRedirect } from "next/navigation";
+
+export default function RemovedCasesPage() {
+  permanentRedirect("/campaigns");
+}

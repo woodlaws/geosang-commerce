@@ -3,10 +3,14 @@ import { siteConfig } from "@/data/site";
 import { BrandLogo } from "@/components/BrandLogo";
 
 export function Footer() {
+  const trustDetails = [
+    ["운영회사", siteConfig.company], ["대표자", siteConfig.representative], ["사업자등록번호", siteConfig.businessNumber], ["주소", siteConfig.address], ["운영시간", siteConfig.hours],
+  ].filter((detail): detail is [string, string] => Boolean(detail[1]));
+  const socialLinks = [["인스타그램", siteConfig.instagram], ["유튜브", siteConfig.youtube], ["틱톡", siteConfig.tiktok]].filter((link): link is [string, string] => Boolean(link[1]));
   return <footer className="footer"><div className="shell footer-grid">
     <div className="footer-brand"><BrandLogo /><p>{siteConfig.serviceDescription}</p><small>{siteConfig.operatorNotice}</small></div>
     <div><strong>서비스</strong><Link href="/campaigns">캠페인</Link><Link href="/brands">브랜드 입점</Link><Link href="/creators">인플루언서 지원</Link></div>
     <div><strong>안내</strong><Link href="/process">진행 방법</Link><Link href="/faq">자주 묻는 질문</Link><Link href="/privacy">개인정보처리방침</Link><Link href="/terms">이용약관</Link></div>
-    {siteConfig.email || siteConfig.phone ? <div className="contact-card"><strong>문의하기</strong>{siteConfig.email ? <span>이메일 {siteConfig.email}</span> : null}{siteConfig.phone ? <span>전화 {siteConfig.phone}</span> : null}</div> : null}
+    {trustDetails.length || siteConfig.email || siteConfig.phone || socialLinks.length ? <div className="contact-card"><strong>운영·문의 정보</strong>{trustDetails.map(([label,value]) => <span key={label}>{label} {value}</span>)}{siteConfig.email ? <a href={`mailto:${siteConfig.email}`}>이메일 {siteConfig.email}</a> : null}{siteConfig.phone ? <a href={`tel:${siteConfig.phone.replace(/[^+\d]/g, "")}`}>전화 {siteConfig.phone}</a> : null}{socialLinks.map(([label,url]) => <a key={label} href={url} target="_blank" rel="noreferrer">{label}</a>)}</div> : null}
   </div><div className="shell copyright">© 2026 GEOSANG COMMERCE. All rights reserved.</div></footer>;
 }
