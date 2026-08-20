@@ -8,19 +8,25 @@ export type CampaignVariant = {
 };
 
 export type CampaignDetailContent = {
+  theme?: "light" | "dark";
   englishName: string;
   introduction: string;
+  heroNotice?: string;
+  highlightTitle?: string;
   productFacts: { label: string; value: string }[];
   highlights: { title: string; description: string }[];
-  routine: { image: string; title: string; description: string; points: string[] };
-  comparison: { image: string; title: string; rows: { label: string; first: string; second: string }[] };
-  mgoGuide: { title: string; description: string; emphasis: string; rows: { mgo: string; umf: string; grade: string }[]; note: string };
+  routine: { image: string; imageAlt?: string; title: string; description: string; points: string[] };
+  ingredientStory?: { title: string; description: string; ingredients: { name: string; amount: number }[] };
+  comparison: { image?: string; title: string; description?: string; rows: { label: string; first: string; second: string }[]; link?: { href: string; label: string } };
+  mgoGuide: { title: string; description: string; emphasis: string; rows: { mgo: string; umf: string; grade: string }[]; emphasizedMgo?: string[]; note: string };
   originStory: { images: { src: string; alt: string }[]; title: string; description: string; cards: string[] };
-  packageStory: { image: string; title: string; cards: { title: string; description: string }[] };
+  packageStory: { image: string; imageAlt?: string; title: string; cards: { title: string; description: string }[] };
+  productInfo?: { rows: { label: string; value: string }[]; importer: string; address: string; phone: string; nutrition: { name: string; value: string }[]; note: string };
   contentIdeas: string[];
   hooks: string[];
   faqs: { question: string; answer: string }[];
   supportNote: string;
+  finalCta?: { title: string; description: string; button: string };
 };
 
 export type Campaign = {
@@ -54,8 +60,12 @@ export const campaigns: Campaign[] = [
     name: "마누카꿀 로열젤리 MGO 300+",
     category: "건강식품",
     status: "모집 중",
-    image: "/products/manuka-royal-jelly.png",
-    imageAlt: "마누카꿀 로열젤리 MGO 300+ 패키지",
+    origin: "호주",
+    image: "/images/campaigns/manuka-300/manuka-mgo-300-thumbnail.webp",
+    imageAlt: "굿데이허니 마누카 위드 로열젤리 MGO 300+ 10포 패키지",
+    imageTreatment: "cover",
+    seoTitle: "굿데이허니 마누카꿀 로열젤리 MGO 300+ 공동구매 | 거상커머스",
+    seoDescription: "호주에서 제조된 굿데이허니 마누카 위드 로열젤리 MGO 300+의 원재료, 제품 구성, 영양정보, 공동구매 제안가와 콘텐츠 아이디어를 확인하세요.",
     shipping: "무료배송",
     variants: [
       { composition: "1개 (12g × 10포)", regularPrice: 38000, offerPrice: 28900 },
@@ -63,11 +73,32 @@ export const campaigns: Campaign[] = [
       { composition: "6개 (12g × 60포)", regularPrice: 228000, offerPrice: 139000 },
       { composition: "9개 (12g × 90포)", regularPrice: 342000, offerPrice: 205900 },
     ],
-    features: ["스틱형 개별 포장", "호주 생산 제품", "여러 수량 구성 선택 가능"],
-    contentFields: ["푸드 라이프", "일상 루틴", "선물 추천"],
+    features: ["MGO 300+", "벌꿀 95%와 로열젤리 5%", "12g 개별 스틱", "호주 제조", "화이트·골드 패키지"],
+    contentFields: ["일상·라이프스타일 크리에이터", "가족·육아 콘텐츠 크리에이터", "푸드 및 식품 리뷰 크리에이터", "직장인 루틴 크리에이터", "선물 추천 콘텐츠 크리에이터", "호주 여행·생활 콘텐츠 크리에이터"],
     recommendedChannels: ["Instagram", "Shorts", "Naver Blog"],
-    contentIdeas: ["아침 일상 속 섭취 루틴", "부모님 또는 지인 선물 구성 소개"],
-    creatorTypes: ["식품과 라이프스타일 콘텐츠를 만드는 크리에이터", "제품 사용 장면을 자연스럽게 보여줄 수 있는 크리에이터"],
+    contentIdeas: ["바쁜 아침에 챙기는 나만의 한 포 루틴", "사무실 서랍이나 가방 속 데일리 아이템", "마누카꿀 MGO 숫자를 쉽게 설명하는 콘텐츠", "부모님·가족에게 제안하는 깔끔한 선물", "MGO 300+와 800+ 비교 콘텐츠", "호주 제조 식품과 원재료를 소개하는 정보형 콘텐츠"],
+    creatorTypes: ["일상과 가족 루틴을 자연스럽게 보여주는 크리에이터", "푸드·식품 정보를 이해하기 쉽게 설명하는 크리에이터", "선물 또는 호주 라이프 콘텐츠를 만드는 크리에이터"],
+    detail: {
+      theme: "light",
+      englishName: "G’DAY HONEY MANUKA WITH ROYAL JELLY MGO 300+",
+      introduction: "호주산 마누카꿀과 로열젤리를 한 포에 담은 데일리 스틱형 제품입니다.",
+      heroNotice: "공동구매 제안 기준가이며 실제 판매 구성, 일정 및 진행 조건은 협의 후 확정됩니다.",
+      highlightTitle: "데일리 마누카를 한눈에 확인하세요",
+      productFacts: [{ label: "식품 유형", value: "당류가공품" }, { label: "구성", value: "12g × 10스틱" }, { label: "총내용량", value: "120g" }, { label: "총열량", value: "390kcal" }, { label: "원재료", value: "벌꿀 95%, 로열젤리 5%" }, { label: "제조국", value: "호주" }, { label: "제조사", value: "PURE AUSTRALIA PTY LTD" }, { label: "형태", value: "개별 스틱 포장" }, { label: "배송", value: "무료배송" }, { label: "캠페인 상태", value: "모집 중" }],
+      highlights: [{ title: "MGO 300+", description: "마누카꿀의 MGO 함량 기준을 확인할 수 있는 제품" }, { title: "마누카꿀과 로열젤리", description: "벌꿀 95%와 로열젤리 5%로 구성" }, { title: "12g 개별 스틱", description: "계량하거나 덜어낼 필요 없이 한 포씩 이용" }, { title: "호주 제조", description: "PURE AUSTRALIA PTY LTD에서 제조된 호주 제품" }, { title: "데일리·선물용 패키지", description: "화이트·골드 디자인의 깔끔한 패키지" }],
+      routine: { image: "/images/campaigns/manuka-300/manuka-mgo-300-routine.webp", imageAlt: "굿데이허니 마누카 MGO 300+ 흰색 개별 스틱", title: "하루 한 포로 간편하게 즐기는 마누카 루틴", description: "12g씩 개별 포장된 스틱형 제품으로 별도의 계량 없이 간편하게 이용할 수 있습니다. 집과 사무실은 물론 외출이나 여행 중에도 휴대하기 좋은 구성입니다.", points: ["벌꿀 95%와 로열젤리 5%의 원재료 구성", "한 포씩 꺼내기 편한 개별 스틱", "호주 제조 제품", "보관과 휴대가 편리한 패키지", "일상 루틴과 선물 콘텐츠에 적합"] },
+      ingredientStory: { title: "마누카꿀에 로열젤리를 더한 한 포", description: "굿데이허니 마누카 위드 로열젤리 MGO 300+는 벌꿀 95%와 로열젤리 5%로 구성된 당류가공품입니다. 마누카꿀과 로열젤리를 한 번에 소개할 수 있어 원재료와 제품 구성 중심의 콘텐츠를 만들기 좋습니다.", ingredients: [{ name: "벌꿀", amount: 95 }, { name: "로열젤리", amount: 5 }] },
+      comparison: { title: "콘텐츠와 고객에 맞춰 선택하는 마누카 라인업", description: "두 제품의 차이는 단순한 우열이 아니라 MGO 기준과 판매 포지션, 콘텐츠 타깃의 차이로 설명해 주세요.", rows: [{ label: "패키지", first: "화이트·골드", second: "블랙·골드" }, { label: "포지션", first: "데일리 마누카 루틴", second: "프리미엄 마누카 라인" }, { label: "구성", first: "12g × 10포", second: "12g × 10포" }, { label: "추천 콘텐츠", first: "일상·가족·입문형", second: "프리미엄·선물·정보형" }, { label: "정상가", first: "38,000원", second: "63,000원" }, { label: "대표 제안가", first: "28,900원", second: "50,900원" }], link: { href: "/campaigns/manuka-royal-jelly-mgo-800", label: "MGO 800+도 비교하기" } },
+      mgoGuide: { title: "MGO 300+는 무엇인가요?", description: "MGO는 마누카꿀에 포함된 메틸글리옥살(Methylglyoxal)의 함량을 나타내는 지표로 사용됩니다. 숫자는 제품의 MGO 함량 기준을 구분하는 데 활용됩니다.", emphasis: "MGO 300+는 일상적인 마누카 루틴을 제안하기 좋은 굿데이허니의 화이트 패키지 라인입니다.", rows: [{ mgo: "약 MGO 83+", umf: "UMF 5+", grade: "Premium" }, { mgo: "약 MGO 263+", umf: "UMF 10+", grade: "Premium" }, { mgo: "약 MGO 306+", umf: "UMF 11+", grade: "Extra Premium" }, { mgo: "약 MGO 514+", umf: "UMF 15+", grade: "Extra Premium" }, { mgo: "약 MGO 759+", umf: "UMF 19+", grade: "Super Premium" }, { mgo: "약 MGO 826+", umf: "UMF 20+", grade: "Super Premium" }], emphasizedMgo: ["약 MGO 263+", "약 MGO 306+"], note: "등급 비교는 첨부 상품자료를 바탕으로 정리한 참고 정보이며 인증기관과 제품별 기준에 따라 차이가 있을 수 있습니다." },
+      originStory: { images: [{ src: "/images/campaigns/manuka-300/manuka-mgo-300-04.webp", alt: "호주 양봉가와 벌집에서 흐르는 꿀" }, { src: "/images/campaigns/manuka-300/manuka-mgo-300-06.webp", alt: "벌집을 확인하는 호주 양봉 현장" }], title: "호주의 자연에서 시작되는 마누카 허니", description: "굿데이허니 마누카 위드 로열젤리 MGO 300+는 호주에서 제조된 제품입니다. 양봉 환경과 마누카꿀의 원산지 이야기는 제품 소개 콘텐츠에 자연스럽게 활용할 수 있습니다.", cards: ["호주 제조 제품", "마누카꿀 원료 스토리", "양봉 과정과 자연환경 이미지", "화이트·골드의 깔끔한 브랜드 디자인"] },
+      packageStory: { image: "/images/campaigns/manuka-300/manuka-mgo-300-package.webp", imageAlt: "굿데이허니 마누카 MGO 300+ 화이트 골드 패키지", title: "간편하고 깔끔한 화이트·골드 패키지", cards: [{ title: "언제 어디서든 한 포", description: "휴대하기 편리한 12g 개별 스틱 구성" }, { title: "보관하기 편한 패키지", description: "필요한 만큼 한 포씩 꺼내기 좋은 패키지 구조" }, { title: "부담 없이 제안하는 선물", description: "화이트·골드 디자인과 컴팩트한 크기의 선물용 구성" }] },
+      productInfo: { rows: [{ label: "제품명", value: "굿데이 허니 마누카 위드 로열젤리 300+" }, { label: "식품의 유형", value: "당류가공품" }, { label: "원재료명 및 함량", value: "벌꿀 95%, 로열젤리 5%" }, { label: "내용량", value: "120g, 12g × 10스틱" }, { label: "총열량", value: "390kcal" }, { label: "소비기한", value: "제품 뒷면 별도 표시" }, { label: "포장재질", value: "내포장 스틱: 폴리에틸렌, 외포장: 종이" }, { label: "보관방법", value: "직사광선을 피하고 서늘한 곳에 보관" }, { label: "제조회사", value: "PURE AUSTRALIA PTY LTD" }, { label: "반품 및 교환", value: "구입처 및 수입원" }, { label: "부정·불량식품 신고", value: "국번 없이 1399" }], importer: "호주직구닷컴 주식회사", address: "서울특별시 용산구 청파로49길 37-3(청파동2가), 디테일씨빌딩 2층 255호", phone: "02-568-9220", nutrition: [{ name: "열량", value: "390kcal" }, { name: "나트륨", value: "10mg, 0.5%" }, { name: "탄수화물", value: "96g, 30%" }, { name: "당류", value: "96g, 96%" }, { name: "지방", value: "0g, 0%" }, { name: "트랜스지방", value: "0g" }, { name: "포화지방", value: "0g, 0%" }, { name: "콜레스테롤", value: "0mg, 0%" }, { name: "단백질", value: "2g, 4%" }], note: "1일 영양성분 기준치에 대한 비율(%)은 2,000kcal 기준이므로 개인의 필요 열량에 따라 다를 수 있습니다." },
+      contentIdeas: ["바쁜 아침에 챙기는 나만의 한 포 루틴", "사무실 서랍이나 가방 속 데일리 아이템", "마누카꿀 MGO 숫자를 쉽게 설명하는 콘텐츠", "부모님·가족에게 제안하는 깔끔한 선물", "MGO 300+와 800+ 비교 콘텐츠", "호주 제조 식품과 원재료를 소개하는 정보형 콘텐츠"],
+      hooks: ["마누카꿀 앞의 300+, 무슨 숫자인지 알고 계셨나요?", "꿀을 매번 덜어 먹기 번거로웠다면 이렇게 챙겨보세요.", "화이트 300+와 블랙 800+, 어떤 차이가 있을까요?"],
+      faqs: [{ question: "MGO 300+는 무엇을 의미하나요?", answer: "MGO는 마누카꿀에 포함된 메틸글리옥살의 함량 기준을 구분하는 지표입니다. 300+는 이 제품에 사용된 마누카꿀의 MGO 등급을 나타냅니다." }, { question: "MGO 800+ 제품과 어떤 차이가 있나요?", answer: "300+는 화이트·골드 패키지의 데일리 마누카 루틴, 800+는 블랙·골드 패키지의 프리미엄 라인으로 안내합니다. 두 제품의 우열이 아니라 MGO 기준과 콘텐츠 포지션의 차이입니다." }, { question: "상품 샘플과 콘텐츠 자료가 제공되나요?", answer: "샘플과 상품 자료의 제공 범위는 인플루언서 매칭 후 캠페인 조건에 따라 안내합니다. 확정되지 않은 항목은 사전에 약속하지 않습니다." }, { question: "배송은 누가 담당하나요?", answer: "상품 공급과 소비자 택배 발송은 공급사가 담당합니다. 거상커머스는 출고 일정과 운영 관련 커뮤니케이션을 지원합니다." }, { question: "공동구매 구성과 가격은 변경될 수 있나요?", answer: "표시 가격과 구성은 공동구매 제안 기준입니다. 판매 일정, 수량, 수수료와 세부 조건을 협의한 뒤 최종 확정합니다." }, { question: "식품 관련 콘텐츠에서 주의할 표현이 있나요?", answer: "질병의 예방·치료, 면역력 향상, 항균 효과 등 확인되지 않은 효능을 단정하는 표현은 피해야 합니다. 콘텐츠 제작 전 제공되는 상품정보와 표시·광고 가이드를 확인해 주세요." }],
+      supportNote: "상품 공급과 택배 발송은 공급사가 담당하고, 거상커머스는 인플루언서 매칭, 캠페인 조율, 콘텐츠 안내 및 운영 커뮤니케이션을 지원합니다.",
+      finalCta: { title: "데일리 마누카 콘텐츠와 잘 맞는다면 제안을 받아보세요", description: "채널과 콘텐츠 성향을 검토한 후 공동구매 조건과 진행 가능 일정을 안내해드립니다.", button: "MGO 300+ 상품 제안받기" }
+    },
   },
   {
     slug: "manuka-royal-jelly-mgo-800",

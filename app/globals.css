@@ -812,3 +812,65 @@ button,a { -webkit-tap-highlight-color:transparent; }
   .about-final-cta { padding:36px 24px; border-radius:22px; }
   .about-final-cta h2 { font-size:32px; }
 }
+
+/* Manuka MGO 300+ light campaign theme */
+.mgo800-comparison-layout.table-only { max-width:880px; margin-inline:auto; display:block; }
+.mgo800-compare-link { width:max-content; margin:18px auto 0; padding:12px 17px; display:flex; border:1px solid #c98b25; border-radius:10px; color:#80520b; background:#fff8e9; font-size:13px; font-weight:900; }
+.mgo800-grade-table tr.emphasis td { color:#8a5000; background:#fff7df; font-weight:900; box-shadow:inset 0 2px #ef8c24,inset 0 -2px #ef8c24; }
+.mgo800-grade-table tr.emphasis td:first-child { box-shadow:inset 2px 0 #ef8c24,inset 0 2px #ef8c24,inset 0 -2px #ef8c24; }
+.mgo800-grade-table tr.emphasis td:last-child { box-shadow:inset -2px 0 #ef8c24,inset 0 2px #ef8c24,inset 0 -2px #ef8c24; }
+.mgo300-page { color:#3b2a18; background:#fffdf8; }
+.mgo300-page .mgo800-hero { color:#3a2816; background:radial-gradient(circle at 83% 17%,#f2c55d42,transparent 31%),linear-gradient(135deg,#fffdf8,#f2e1bd); }
+.mgo300-page .mgo800-hero-image { border-color:#d9b66c; background:#ead8b7; box-shadow:0 28px 70px #7b55231c; }
+.mgo300-page .mgo800-hero .mgo800-kicker { color:#9a650c; }
+.mgo300-page .mgo800-english { color:#8e765b; }
+.mgo300-page .mgo800-intro { color:#665747; }
+.mgo300-page .mgo800-facts { border-color:#d7c4a8; background:#d7c4a8; }
+.mgo300-page .mgo800-facts>div { background:#fffaf1; }
+.mgo300-page .mgo800-facts small { color:#887966; }
+.mgo300-page .mgo800-price-summary span { color:#df741c; }
+.mgo300-page .mgo800-price-note { color:#7b6f61; }
+.mgo300-page .mgo800-primary-button,.mgo300-page .mgo800-white-button { color:#fff; background:#0866c6; }
+.mgo300-page .mgo800-gold-section { background:linear-gradient(145deg,#fff5cf,#f7d979); }
+.mgo300-page .mgo800-dark-section { color:#3a2918; background:linear-gradient(145deg,#fffaf0,#efdca9); }
+.mgo300-page .mgo800-dark-section .mgo800-section-head h2,.mgo300-page .mgo800-dark-section .process-timeline li strong { color:#3a2918; }
+.mgo300-page .mgo800-dark-section .mgo800-section-head>span { color:#a36b13; }
+.mgo300-page .mgo800-package-image { background:#ead4a7; box-shadow:0 25px 75px #67440f1c; }
+.mgo300-page .mgo800-package-cards article { border-color:#cdb784; background:#fff9ed; }
+.mgo300-page .mgo800-package-cards h3 { color:#9b6107; }
+.mgo300-page .mgo800-package-cards p { color:#675a49; }
+.mgo300-page .mgo800-dark-section .process-icon { color:#fff; }
+.mgo300-page .sticky-detail-cta .gradient-button { background:#0866c6; }
+.mgo300-ingredient-card { max-width:850px; margin:0 auto; padding:34px; border:1px solid #e4d7c3; border-radius:22px; background:#fff; }
+.mgo300-ingredient-bar { height:34px; overflow:hidden; display:flex; border-radius:999px; background:#f3e6ca; }
+.mgo300-ingredient-bar span:first-child { background:linear-gradient(90deg,#d8a536,#f0c865); }
+.mgo300-ingredient-bar span:last-child { background:#ef7b22; }
+.mgo300-ingredient-card>div:last-child { margin-top:22px; display:flex; gap:24px; }
+.mgo300-ingredient-card p { margin:0; display:flex; align-items:center; gap:9px; }
+.mgo300-ingredient-card p>span { width:12px; height:12px; border-radius:50%; background:#dca73a; }
+.mgo300-ingredient-card p:last-child>span { background:#ef7b22; }
+.mgo300-ingredient-card b { color:#9d610c; font-size:21px; }
+.mgo300-product-info { display:grid; grid-template-columns:1.15fr .85fr; gap:18px; }
+.mgo300-product-info>div { min-width:0; padding:32px; border:1px solid #e1d4c0; border-radius:22px; background:#fff; }
+.mgo300-product-info h3 { margin:0 0 22px; font-size:25px; }
+.mgo300-product-info h3 small { display:block; margin-top:6px; color:#887a69; font-size:11px; }
+.mgo300-product-info dl { margin:0; }
+.mgo300-product-info dl>div { padding:13px 0; display:grid; grid-template-columns:150px 1fr; gap:16px; border-bottom:1px solid #eee5d8; }
+.mgo300-product-info dt { color:#8a755d; font-size:12px; font-weight:850; }
+.mgo300-product-info dd { margin:0; font-size:13px; line-height:1.55; }
+.mgo300-product-info .nutrition>div { grid-template-columns:1fr auto; }
+.mgo300-product-info .nutrition dd { font-weight:850; }
+.mgo300-product-info>div>p { color:#7e7264; font-size:11px; line-height:1.65; }
+.mgo300-importer { margin-top:22px; padding:18px; display:grid; gap:7px; border-radius:13px; background:#fff6e3; }
+.mgo300-importer span { font-size:12px; line-height:1.6; }
+.mgo300-importer a { color:#0866c6; font-size:13px; font-weight:900; }
+@media (max-width:900px) {
+  .mgo300-product-info { grid-template-columns:1fr; }
+}
+@media (max-width:560px) {
+  .mgo300-ingredient-card { padding:24px 20px; }
+  .mgo300-ingredient-card>div:last-child { align-items:flex-start; flex-direction:column; }
+  .mgo300-product-info>div { padding:24px 20px; }
+  .mgo300-product-info dl>div { grid-template-columns:1fr; gap:5px; }
+  .mgo300-product-info .nutrition>div { grid-template-columns:1fr auto; }
+}
