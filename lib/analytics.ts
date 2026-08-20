@@ -14,7 +14,14 @@ export type AnalyticsEvent =
   | "complete_creator_step_2"
   | "select_creator_campaign"
   | "submit_creator_application"
-  | "creator_application_error";
+  | "creator_application_error"
+  | "view_brand_page"
+  | "start_brand_inquiry"
+  | "complete_brand_step_1"
+  | "complete_brand_step_2"
+  | "brand_fit_check_completed"
+  | "submit_brand_inquiry"
+  | "brand_inquiry_error";
 
 export function trackEvent(event: AnalyticsEvent, parameters: Record<string, string | number | boolean> = {}) {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;

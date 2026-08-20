@@ -40,8 +40,8 @@ export function createPageMetadata(title: string, description: string, path: str
 }
 
 export const team = [
-  { name: "임헌수", role: "대표", lines: ["거상스쿨·거상마케팅센터 대표", "AI·마케팅·교육 콘텐츠 기획", "브랜드 콘텐츠 및 판매 구조 설계"] },
-  { name: "이유진", role: "팀장", lines: ["거상마케팅센터 공동구매 운영", "인플루언서 커뮤니케이션", "캠페인 일정·판매·정산 관리"] },
+  { name: "임헌수", role: "대표", image: "/images/team/lim-heonsu.jpg", instagram: "https://www.instagram.com/geosang.bruce/", handle: "@geosang.bruce", lines: ["거상스쿨·거상마케팅센터 대표", "AI·마케팅·교육 콘텐츠 기획", "브랜드 콘텐츠 및 판매 구조 설계"] },
+  { name: "이유진", role: "팀장", image: "/images/team/lee-yujin.png", instagram: "https://www.instagram.com/happy.yujin_/", handle: "@happy.yujin_", lines: ["거상마케팅센터 공동구매 운영", "인플루언서 커뮤니케이션", "캠페인 일정·판매·정산 관리"] },
 ];
 
 export const commonFaqs = featuredFaqs;

@@ -94,6 +94,16 @@ actions tied to the current ChatGPT user. Leave public content anonymous.
 - `npm test`: build the starter and verify its rendered loading skeleton
 - `npm run db:generate`: generate Drizzle migrations after schema changes
 
+## Brand inquiry delivery
+
+The three-step brand proposal form posts to the server route `POST /api/brand-inquiries`. Set `BRAND_FORM_ENDPOINT` to the HTTPS webhook URL for Google Apps Script, Google Sheets automation, or your CRM. The server validates and normalizes the form before forwarding it, so the private server variable is recommended.
+
+For backward compatibility, `NEXT_PUBLIC_BRAND_FORM_ENDPOINT` is also accepted, but do not put secrets or authenticated CRM URLs in a public environment variable. When neither value is set, the page keeps the submit button disabled and displays `접수 준비 중`; it never shows a fake success state.
+
+```bash
+BRAND_FORM_ENDPOINT=https://your-secure-webhook.example.com/brand-inquiries
+```
+
 ## Learn More
 
 - [vinext Documentation](https://github.com/cloudflare/vinext)
