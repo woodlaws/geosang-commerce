@@ -29,6 +29,33 @@ export type CampaignDetailContent = {
   finalCta?: { title: string; description: string; button: string };
 };
 
+export type PropolisDetailContent = {
+  englishName: string;
+  introduction: string;
+  functionalClaim: string;
+  reviewNumber: string;
+  reviewText: string;
+  heroImage: string;
+  images: { dutyFree: string; product: string; use: string; gift: string; ingredients: string; label: string };
+  productFacts: { label: string; value: string }[];
+  highlights: { title: string; description: string }[];
+  ingredients: { name: string; type: "주원료" | "부원료"; description: string }[];
+  servingGuide: { target: string; method: string; dailyAmount: string; steps: string[] };
+  cautions: string[];
+  productInfo: { label: string; value: string }[];
+  address: string;
+  rawIngredients: string;
+  nutrition: { name: string; value: string }[];
+  contentIdeas: string[];
+  creatorTypes: string[];
+  hooks: string[];
+  prohibitedExpressions: string[];
+  faqs: { question: string; answer: string }[];
+  supportItems: string[];
+  supportNote: string;
+  finalCta: { title: string; description: string; button: string };
+};
+
 export type Campaign = {
   slug: string;
   brand: string;
@@ -51,6 +78,7 @@ export type Campaign = {
   contentIdeas?: string[];
   creatorTypes: string[];
   detail?: CampaignDetailContent;
+  propolisDetail?: PropolisDetailContent;
 };
 
 export const campaigns: Campaign[] = [
@@ -146,19 +174,50 @@ export const campaigns: Campaign[] = [
     name: "굿데이 프로폴리스 스프레이",
     category: "건강식품",
     status: "모집 중",
-    image: "/products/propolis-spray.png",
-    imageAlt: "굿데이 프로폴리스 스프레이 패키지",
+    origin: "호주",
+    image: "/images/campaigns/propolis-spray/propolis-spray-thumbnail.webp",
+    imageAlt: "굿데이 프로폴리스 스프레이 25ml 제품과 패키지",
+    imageTreatment: "cover",
+    seoTitle: "굿데이 프로폴리스 스프레이 공동구매 | 거상커머스",
+    seoDescription: "호주에서 제조된 굿데이 프로폴리스 스프레이 25ml의 기능성, 원재료, 섭취방법, 공동구매 제안가와 인플루언서 콘텐츠 아이디어를 확인하세요.",
+    searchKeywords: ["굿데이", "프로폴리스", "스프레이", "구강", "건강기능식품", "호주"],
     shipping: "무료배송",
     variants: [
-      { composition: "1개", regularPrice: 30000, offerPrice: 19800 },
+      { composition: "1개 (25ml)", regularPrice: 30000, offerPrice: 19800 },
       { composition: "4개 + 선물백 증정", regularPrice: 120000, offerPrice: 71900 },
       { composition: "7개 + 선물백 2개 증정", regularPrice: 210000, offerPrice: 118500 },
     ],
-    features: ["스프레이 타입", "휴대 가능한 패키지", "선물백 포함 구성 선택 가능"],
-    contentFields: ["라이프스타일", "여행·휴대 아이템", "선물 추천"],
+    features: ["구강 항균 기능성", "25ml 미세분사 스프레이", "총 플라보노이드 2.25mg", "호주 제조", "휴대 가능한 패키지"],
+    contentFields: ["건강한 생활 습관", "라이프스타일·직장인", "여행·출장 준비", "호주 제품", "부모님·가족 선물", "건강기능식품 정보", "구강 관리"],
     recommendedChannels: ["Instagram", "TikTok", "Shorts"],
-    contentIdeas: ["가방 속 휴대 아이템", "여행 준비물 소개"],
-    creatorTypes: ["일상 속 제품 활용을 보여주는 크리에이터", "간결한 숏폼 제품 소개에 강한 크리에이터"],
+    contentIdeas: ["가방 속 휴대용 구강 루틴 아이템", "식사 후 사용하는 나만의 구강 관리 루틴", "호주에서 온 건강기능식품 소개", "출장·여행 시 챙기는 소형 스프레이"],
+    creatorTypes: ["건강한 생활 습관 콘텐츠 크리에이터", "라이프스타일·직장인 콘텐츠 크리에이터", "건강기능식품 정보형 크리에이터"],
+    propolisDetail: {
+      englishName: "G’DAY PROPOLIS SPRAY",
+      introduction: "프로폴리스 추출물을 주원료로 한 25ml 구강 스프레이형 건강기능식품입니다.",
+      functionalClaim: "구강에서의 항균작용에 도움을 줄 수 있음",
+      reviewNumber: "260111780",
+      reviewText: "한국건강기능식품협회에서 광고심의를 받은 광고물입니다. 심의번호 260111780",
+      heroImage: "/images/campaigns/propolis-spray/propolis-spray-hero.webp",
+      images: { dutyFree: "/images/campaigns/propolis-spray/propolis-spray-sydney-duty-free.webp", product: "/images/campaigns/propolis-spray/propolis-spray-product.webp", use: "/images/campaigns/propolis-spray/propolis-spray-use.webp", gift: "/images/campaigns/propolis-spray/propolis-spray-gift-package.webp", ingredients: "/images/campaigns/propolis-spray/propolis-spray-ingredients.webp", label: "/images/campaigns/propolis-spray/propolis-spray-label.webp" },
+      productFacts: [{ label: "제품 유형", value: "건강기능식품" }, { label: "내용량", value: "25ml" }, { label: "1일 섭취량", value: "1.5ml" }, { label: "섭취방법", value: "성인 1일 3회, 1회 0.5ml씩 구강에 분사" }, { label: "제조국", value: "호주" }, { label: "제조사", value: "PURE AUSTRALIA PTY LTD" }, { label: "원산지", value: "호주" }, { label: "형태", value: "미세분사 스프레이" }, { label: "용기", value: "알루미늄" }, { label: "배송", value: "무료배송" }, { label: "캠페인 상태", value: "모집 중" }],
+      highlights: [{ title: "구강 항균 기능성", description: "구강에서의 항균작용에 도움을 줄 수 있는 건강기능식품" }, { title: "25ml 스프레이형", description: "구강에 직접 분사할 수 있는 미세분사 방식" }, { title: "프로폴리스 추출물", description: "총 플라보노이드 1일 섭취량 기준 2.25mg 함유" }, { title: "호주 제조", description: "PURE AUSTRALIA PTY LTD에서 제조된 호주산 제품" }, { title: "휴대하기 좋은 크기", description: "가방이나 파우치에 보관하기 편한 컴팩트한 용기" }],
+      ingredients: [{ name: "프로폴리스 추출물", type: "주원료", description: "프로폴리스는 벌이 외부 환경으로부터 벌집을 보호하기 위해 사용하는 물질로 알려져 있으며, 본 제품에서는 건강기능식품의 기능성 주원료로 사용됩니다." }, { name: "카카두플럼열매추출물", type: "부원료", description: "호주 북부 지역에서 자생하는 카카두플럼 열매에서 얻은 추출물입니다." }, { name: "마누카꿀", type: "부원료", description: "호주에서 생산되는 마누카꿀을 제품의 부원료로 사용했습니다." }, { name: "페퍼민트·포멜로·레몬", type: "부원료", description: "페퍼민트향과 과일 계열 향을 함께 사용한 스프레이형 제품입니다." }],
+      servingGuide: { target: "성인", method: "1일 3회, 1회 0.5ml(3회 분사)를 구강에 분사하여 섭취하십시오.", dailyAmount: "총 1.5ml", steps: ["사용 전 제품을 확인합니다.", "구강을 향해 3회 분사합니다.", "하루 3회 기준으로 섭취합니다."] },
+      cautions: ["프로폴리스에 알레르기를 나타내는 사람은 섭취에 주의하십시오.", "이상사례 발생 시 섭취를 중단하고 전문가와 상담하십시오.", "아이들의 손이 닿지 않는 서늘한 곳에 보관하십시오.", "소비기한은 제품 측면의 별도 표시일까지입니다.", "본 제품은 질병의 예방 및 치료를 위한 의약품이 아닙니다.", "이상사례 신고는 국번 없이 1577-2488입니다."],
+      productInfo: [{ label: "제품명", value: "굿데이 프로폴리스 스프레이" }, { label: "제품 유형", value: "건강기능식품" }, { label: "내용량", value: "25ml" }, { label: "제조사", value: "PURE AUSTRALIA PTY LTD" }, { label: "원산지", value: "호주" }, { label: "수입업소명", value: "호주직구닷컴 주식회사" }, { label: "고객상담전화", value: "02-568-9220" }, { label: "섭취방법", value: "성인 1일 3회, 1회 0.5ml(3회 분사)를 구강에 분사" }, { label: "보관방법", value: "아이들 손이 닿지 않는 서늘한 곳에 실온 보관" }, { label: "소비기한", value: "제품 측면 별도 표시일까지" }, { label: "포장재질", value: "용기 알루미늄, 뚜껑 PP" }, { label: "반품 및 교환", value: "구입처 및 수입원" }],
+      address: "서울특별시 용산구 청파로49길 37-03(청파동2가), 디테일씨빌딩 2층 255호",
+      rawIngredients: "프로폴리스추출물, 정제수, 글리세린, D-소비톨(감미료), 벌꿀, 포멜로열매추출물, 카카두플럼열매추출물, 레몬추출물, L-멘톨, 서양박하잎오일",
+      nutrition: [{ name: "열량", value: "0kcal" }, { name: "탄수화물", value: "0g" }, { name: "당류", value: "0g" }, { name: "단백질", value: "0g" }, { name: "지방", value: "0g" }, { name: "총 플라보노이드", value: "2.25mg" }],
+      contentIdeas: ["가방 속 휴대용 구강 루틴 아이템", "식사 후 사용하는 나만의 구강 관리 루틴", "호주에서 온 건강기능식품 소개", "프로폴리스 주원료를 설명하는 정보형 콘텐츠", "출장·여행 시 챙기는 소형 스프레이", "부모님·직장 동료를 위한 선물 아이디어", "Sydney Duty Free 브랜드 스토리", "건강기능식품 표시사항 확인법"],
+      creatorTypes: ["건강한 생활 습관 콘텐츠", "라이프스타일·직장인 콘텐츠", "여행·출장 준비 콘텐츠", "호주 여행 및 호주 제품 콘텐츠", "부모님·가족 선물 콘텐츠", "건강기능식품 정보형 콘텐츠", "구강 관리 콘텐츠"],
+      hooks: ["이 작은 스프레이가 건강기능식품이라는 사실, 알고 계셨나요?", "식사 후 간편하게 챙기는 나만의 구강 루틴", "프로폴리스 스프레이를 고를 때 확인해야 할 한 가지", "호주에서 온 25ml 구강 스프레이, 무엇이 다를까요?"],
+      prohibitedExpressions: ["목이 아플 때 뿌리세요", "감기 예방 스프레이", "입냄새 제거", "잇몸병 예방", "염증 치료", "천연 항생제"],
+      faqs: [{ question: "굿데이 프로폴리스 스프레이는 어떤 제품인가요?", answer: "프로폴리스 추출물을 주원료로 한 25ml 구강 스프레이형 건강기능식품입니다." }, { question: "인정받은 기능성은 무엇인가요?", answer: "제품 표시사항에 따른 기능성 내용은 ‘구강에서의 항균작용에 도움을 줄 수 있음’입니다. 질병의 예방·치료나 세균 제거를 보장하는 제품으로 표현하면 안 됩니다." }, { question: "하루에 몇 번 섭취하나요?", answer: "성인은 하루 3회, 1회 0.5ml(3회 분사)를 구강에 분사하여 섭취합니다. 1일 섭취량은 총 1.5ml입니다." }, { question: "프로폴리스 알레르기가 있어도 섭취할 수 있나요?", answer: "프로폴리스에 알레르기를 나타내는 사람은 섭취에 주의해야 합니다. 이상사례가 발생하면 섭취를 중단하고 전문가와 상담해 주세요." }, { question: "상품 샘플과 콘텐츠 자료가 제공되나요?", answer: "샘플과 상품 자료의 제공 범위는 매칭 후 캠페인 조건에 따라 안내합니다. 건강기능식품 표시·광고 가이드도 함께 확인합니다." }, { question: "배송은 누가 담당하나요?", answer: "상품 공급과 소비자 택배 발송은 공급사가 담당하며, 거상커머스가 출고 일정과 운영 커뮤니케이션을 지원합니다." }, { question: "건강기능식품 콘텐츠에서 어떤 표현을 주의해야 하나요?", answer: "질병의 예방·치료, 세균 제거, 감기 예방, 입냄새 제거 등 허용 범위를 벗어난 표현은 사용하지 않습니다. 제공되는 표시·광고 가이드를 확인해 주세요." }, { question: "선물 박스가 공동구매 구성에 포함되나요?", answer: "선물 패키지 포함 여부는 실제 공동구매 구성과 공급 조건을 협의한 후 확정됩니다." }],
+      supportItems: ["상품과 채널 적합성 확인", "캠페인 일정 조율", "콘텐츠 기획자료 및 표시·광고 가이드 안내", "공급 및 배송 커뮤니케이션", "판매 현황 확인 지원", "정산 일정 안내"],
+      supportNote: "상품 공급과 택배 발송은 공급사가 담당하고, 거상커머스는 인플루언서 매칭, 캠페인 조율, 콘텐츠 안내 및 운영 커뮤니케이션을 지원합니다.",
+      finalCta: { title: "프로폴리스 콘텐츠와 잘 맞는다면 상품 제안을 받아보세요", description: "채널과 콘텐츠 성향을 검토한 후 공동구매 조건, 표시·광고 가이드와 진행 가능 일정을 안내해드립니다.", button: "프로폴리스 스프레이 제안받기" }
+    },
   },
   {
     slug: "quokkies-macadamia",
