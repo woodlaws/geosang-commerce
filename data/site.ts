@@ -9,7 +9,7 @@ export const siteConfig = {
   englishName: "GEOSANG COMMERCE",
   description: "거상커머스는 브랜드와 인플루언서를 연결해 공동구매 캠페인을 기획·운영하는 인플루언서 공동구매 플랫폼입니다.",
   serviceDescription: "브랜드와 인플루언서를 연결하는 공동구매 플랫폼",
-  slogan: "좋은 상품과 영향력을 매출로 연결합니다",
+  slogan: "실제 공급 가능한 상품과 체계적인 공동구매 운영 지원",
   operatorNotice: "거상커머스는 거상마케팅센터가 운영하는 공동구매 플랫폼입니다.",
   url: SITE_URL,
   logo: "/images/brand/geosang-commerce-logo.png",
