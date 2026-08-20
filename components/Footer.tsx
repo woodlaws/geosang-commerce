@@ -10,7 +10,7 @@ export function Footer() {
   return <footer className="footer"><div className="shell footer-grid">
     <div className="footer-brand"><BrandLogo /><p>{siteConfig.serviceDescription}</p><small>{siteConfig.operatorNotice}</small></div>
     <div><strong>서비스</strong><Link href="/campaigns">캠페인</Link><Link href="/brands">브랜드 입점</Link><Link href="/creators">인플루언서 지원</Link></div>
-    <div><strong>안내</strong><Link href="/process">진행 방법</Link><Link href="/faq">자주 묻는 질문</Link><Link href="/privacy">개인정보처리방침</Link><Link href="/terms">이용약관</Link></div>
+    <div><strong>안내</strong><Link href="/process">공동구매 진행</Link><Link href="/faq">자주 묻는 질문</Link><Link href="/privacy">개인정보처리방침</Link><Link href="/terms">이용약관</Link></div>
     {trustDetails.length || siteConfig.email || siteConfig.phone || socialLinks.length ? <div className="contact-card"><strong>운영·문의 정보</strong>{trustDetails.map(([label,value]) => <span key={label}>{label} {value}</span>)}{siteConfig.email ? <a href={`mailto:${siteConfig.email}`}>이메일 {siteConfig.email}</a> : null}{siteConfig.phone ? <a href={`tel:${siteConfig.phone.replace(/[^+\d]/g, "")}`}>전화 {siteConfig.phone}</a> : null}{socialLinks.map(([label,url]) => <a key={label} href={url} target="_blank" rel="noreferrer">{label}</a>)}</div> : null}
   </div><div className="shell copyright">© 2026 GEOSANG COMMERCE. All rights reserved.</div></footer>;
 }

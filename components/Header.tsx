@@ -5,7 +5,7 @@ import { useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { TrackedLink } from "@/components/TrackedLink";
 
-const links = [["캠페인", "/campaigns"], ["브랜드 입점", "/brands"], ["인플루언서 지원", "/creators"], ["진행 방법", "/process"], ["회사 소개", "/about"], ["자주 묻는 질문", "/faq"]];
+const links = [["캠페인", "/campaigns"], ["브랜드 입점", "/brands"], ["인플루언서 지원", "/creators"], ["공동구매 진행", "/process"], ["회사 소개", "/about"], ["자주 묻는 질문", "/faq"]];
 
 export function Header() {
   const [open, setOpen] = useState(false);
