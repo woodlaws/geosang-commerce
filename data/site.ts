@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { featuredFaqs } from "./faqs";
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://geosang-commerce.vercel.app";
+export const COMMON_OG_IMAGE = "/images/og/geosang-commerce-og.png";
 
 export const absoluteUrl = (path = "/") => new URL(path, `${SITE_URL}/`).toString();
 
@@ -29,12 +30,12 @@ export const siteConfig = {
 export function createPageMetadata(title: string, description: string, path: string): Metadata {
   const fullTitle = title.includes(siteConfig.name) ? title : `${title} | ${siteConfig.name}`;
   const url = absoluteUrl(path);
-  const image = absoluteUrl("/og.png");
+  const image = absoluteUrl(COMMON_OG_IMAGE);
   return {
     title: { absolute: fullTitle },
     description,
     alternates: { canonical: url },
-    openGraph: { title: fullTitle, description, url, siteName: siteConfig.name, locale: "ko_KR", type: "website", images: [{ url: image, width: 1200, height: 630, alt: "거상커머스 호주 프리미엄 상품 컬렉션" }] },
+    openGraph: { title: fullTitle, description, url, siteName: siteConfig.name, locale: "ko_KR", type: "website", images: [{ url: image, width: 1200, height: 630, alt: "호주 프리미엄 상품과 한국 크리에이터를 연결하는 거상커머스" }] },
     twitter: { card: "summary_large_image", title: fullTitle, description, images: [image] },
   };
 }

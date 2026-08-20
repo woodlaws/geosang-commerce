@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
 import { MobilePageCTA } from "@/components/MobilePageCTA";
-import { absoluteUrl, siteConfig } from "@/data/site";
+import { absoluteUrl, COMMON_OG_IMAGE, siteConfig } from "@/data/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: ["호주 상품 공동구매", "인플루언서 공동구매", "공동구매 플랫폼", "호주 프리미엄 상품", "브랜드 공동구매 입점", "거상커머스"],
   alternates: { canonical: absoluteUrl("/") },
-  openGraph: { title: "호주 상품 공동구매 플랫폼 | 거상커머스", description: siteConfig.description, url: absoluteUrl("/"), siteName: siteConfig.name, locale: "ko_KR", type: "website", images: [{ url: absoluteUrl("/og.png"), width: 1200, height: 630, alt: "거상커머스 호주 프리미엄 상품 컬렉션" }] },
-  twitter: { card: "summary_large_image", title: "호주 상품 공동구매 플랫폼 | 거상커머스", description: siteConfig.description, images: [absoluteUrl("/og.png")] },
+  openGraph: { title: "호주 상품 공동구매 플랫폼 | 거상커머스", description: siteConfig.description, url: absoluteUrl("/"), siteName: siteConfig.name, locale: "ko_KR", type: "website", images: [{ url: absoluteUrl(COMMON_OG_IMAGE), width: 1200, height: 630, alt: "호주 프리미엄 상품과 한국 크리에이터를 연결하는 거상커머스" }] },
+  twitter: { card: "summary_large_image", title: "호주 상품 공동구매 플랫폼 | 거상커머스", description: siteConfig.description, images: [absoluteUrl(COMMON_OG_IMAGE)] },
   robots: { index: true, follow: true },
   icons: {
     icon: [{ url: absoluteUrl(siteConfig.logo), type: "image/png" }],
@@ -37,7 +37,7 @@ export default function RootLayout({
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", "@id": `${siteConfig.url}/#organization`, name: siteConfig.name, alternateName: siteConfig.englishName, description: siteConfig.serviceDescription, url: absoluteUrl("/"), logo: absoluteUrl(siteConfig.logo), sameAs: [siteConfig.instagram, siteConfig.youtube, siteConfig.tiktok].filter(Boolean), parentOrganization: { "@type": "Organization", name: "거상마케팅센터" } },
+      { "@type": "Organization", "@id": `${siteConfig.url}/#organization`, name: siteConfig.name, alternateName: siteConfig.englishName, description: "호주 프리미엄 상품과 한국 인플루언서를 연결하는 공동구매 플랫폼", url: absoluteUrl("/"), logo: absoluteUrl(siteConfig.logo), image: absoluteUrl(COMMON_OG_IMAGE), sameAs: [siteConfig.instagram, siteConfig.youtube, siteConfig.tiktok].filter(Boolean), parentOrganization: { "@type": "Organization", name: "거상마케팅센터" } },
       { "@type": "WebSite", "@id": `${siteConfig.url}/#website`, name: siteConfig.name, url: absoluteUrl("/"), publisher: { "@id": `${siteConfig.url}/#organization` }, inLanguage: "ko-KR" },
     ],
   };

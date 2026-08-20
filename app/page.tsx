@@ -3,14 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { TrackedLink } from "@/components/TrackedLink";
-import { commonFaqs, absoluteUrl } from "@/data/site";
+import { commonFaqs, absoluteUrl, COMMON_OG_IMAGE, siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: { absolute: "호주 상품 공동구매 플랫폼 | 거상커머스" },
   description: "거상커머스는 호주 프리미엄 상품을 발굴하고 한국 인플루언서와 연결해 공동구매 상품 매칭, 콘텐츠 안내와 캠페인 운영을 지원합니다.",
   alternates: { canonical: absoluteUrl("/") },
-  openGraph: { title: "호주 상품 공동구매 플랫폼 | 거상커머스", description: "호주에서 찾은 좋은 제품을 한국 크리에이터의 콘텐츠와 연결합니다.", url: absoluteUrl("/"), type: "website", images: [{ url: absoluteUrl("/og.png"), width: 1200, height: 630, alt: "거상커머스 호주 프리미엄 상품 컬렉션" }] },
-  twitter: { card: "summary_large_image", title: "호주 상품 공동구매 플랫폼 | 거상커머스", description: "호주에서 찾은 좋은 제품을 한국 크리에이터의 콘텐츠와 연결합니다.", images: [absoluteUrl("/og.png")] },
+  openGraph: { title: "호주 상품과 한국 크리에이터를 연결합니다 | 거상커머스", description: "호주 프리미엄 상품을 한국 인플루언서의 콘텐츠와 연결하는 공동구매 플랫폼", url: absoluteUrl("/"), siteName: siteConfig.name, locale: "ko_KR", type: "website", images: [{ url: absoluteUrl(COMMON_OG_IMAGE), width: 1200, height: 630, alt: "호주 프리미엄 상품과 한국 크리에이터를 연결하는 거상커머스" }] },
+  twitter: { card: "summary_large_image", title: "호주 상품과 한국 크리에이터를 연결합니다 | 거상커머스", description: "호주 프리미엄 상품을 한국 인플루언서의 콘텐츠와 연결하는 공동구매 플랫폼", images: [absoluteUrl(COMMON_OG_IMAGE)] },
 };
 
 const products = [
