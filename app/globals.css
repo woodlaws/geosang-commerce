@@ -887,3 +887,31 @@ button,a { -webkit-tap-highlight-color:transparent; }
   .mgo300-product-info dl>div { grid-template-columns:1fr; gap:5px; }
   .mgo300-product-info .nutrition>div { grid-template-columns:1fr auto; }
 }
+
+.quokkies-image-text { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:center; gap:clamp(2rem,5vw,5rem); }
+.quokkies-image-text.reverse>img { order:2; }
+.quokkies-image-text img,.quokkies-size-grid>img { width:100%; height:auto; max-height:680px; object-fit:contain; border-radius:28px; }
+.quokkies-image-text h2 { font-size:clamp(2rem,4vw,3.4rem); line-height:1.12; margin:.8rem 0 1.2rem; }
+.quokkies-image-text p,.quokkies-image-text li { font-size:1.05rem; line-height:1.8; }
+.quokkies-region-list { display:grid; gap:.75rem; margin-top:1.5rem; }
+.quokkies-region-list div { display:grid; gap:.2rem; padding:1rem 1.2rem; border-radius:16px; background:#f7f2e8; }
+.quokkies-region-list span { color:#675f54; }
+.quokkies-source-notice { margin-top:1.5rem; padding:1rem 1.2rem; border-left:4px solid #ff8b34; background:#fff8ec; color:#5f564b; line-height:1.7; }
+.quokkies-opener-steps { display:grid; gap:.75rem; padding:0; list-style:none; }
+.quokkies-opener-steps li { display:grid; grid-template-columns:38px 1fr; align-items:center; gap:.8rem; }
+.quokkies-opener-steps span { display:grid; place-items:center; width:38px; height:38px; border-radius:50%; background:#145f43; color:#fff; font-weight:800; }
+.quokkies-package-colors { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.3rem; }
+.quokkies-package-colors span { padding:.65rem 1rem; border-radius:999px; background:#fff; border:1px solid #e7d9c5; font-weight:800; }
+.quokkies-size-grid>img { background:#fff; }
+.quokkies-table-wrap table { min-width:520px; }
+@media (max-width:900px) {
+  .quokkies-image-text { grid-template-columns:1fr; }
+  .quokkies-image-text.reverse>img { order:0; }
+  .quokkies-image-text img,.quokkies-size-grid>img { max-height:none; }
+  .quokkies-size-grid { grid-template-columns:1fr; }
+}
+@media (max-width:560px) {
+  .quokkies-image-text h2 { font-size:clamp(1.8rem,9vw,2.5rem); }
+  .quokkies-image-text p,.quokkies-image-text li { font-size:1rem; }
+  .quokkies-table-wrap table { min-width:480px; }
+}

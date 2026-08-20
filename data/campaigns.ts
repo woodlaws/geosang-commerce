@@ -65,11 +65,15 @@ export type QuokkiesDetailContent = {
   productFacts: { label: string; value: string }[];
   highlights: { title: string; description: string }[];
   flavors: { name: string; color: string; description: string; ideas: string[] }[];
+  packageColors: string[];
+  originRegions: { english: string; korean: string }[];
+  nutSize: { range: string; comparison: string; sourceNotice: string };
+  kernelRatio: string;
   packagePoints: string[];
-  openerSteps: string[];
-  comparison: { label: string; general: string; quokkies: string }[];
+  openerGuide: string[];
+  comparison: { label: string; value: string }[];
   recommendations: string[];
-  cautions: string[];
+  allergyNotice: string[];
   contentIdeas: string[];
   creatorTypes: string[];
   hooks: string[];
@@ -258,8 +262,8 @@ export const campaigns: Campaign[] = [
       { name: "바닐라 로스티드", description: "초록색 패키지의 바닐라 로스티드 마카다미아" },
       { name: "드라이 로스티드", description: "주황색 패키지의 드라이 로스티드 마카다미아" },
     ],
-    seoTitle: "쿼키즈 마카다미아 공동구매 인플루언서 모집 | 거상커머스",
-    seoDescription: "호주 쿼키즈 마카다미아 바닐라 로스티드와 드라이 로스티드 공동구매를 진행할 인플루언서를 모집합니다. 상품 공급과 무료배송, 캠페인 운영을 지원합니다.",
+    seoTitle: "쿼키즈 호주산 마카다미아 공동구매 | 거상커머스",
+    seoDescription: "호주산 쿼키즈 마카다미아 바닐라 로스티드와 드라이 로스티드의 특징, 맛 비교, 패키지, 공동구매 제안가와 콘텐츠 아이디어를 확인하세요.",
     shipping: "무료배송",
     variants: [
       { composition: "바닐라 로스티드 120g × 6개", regularPrice: 75000, onlineLowestPrice: 54900, offerPrice: 44900 },
@@ -270,31 +274,35 @@ export const campaigns: Campaign[] = [
       { composition: "바닐라 5개 + 드라이 5개 혼합", regularPrice: 125000, onlineLowestPrice: 86000, offerPrice: 69500 },
     ],
     features: ["바닐라·드라이 2종", "120g 개별 패키지", "6개·10개 구성 선택 가능", "호주 원산지", "무료배송"],
-    contentFields: ["간식·먹방", "육아·가족", "홈카페", "캠핑·여행", "호주 상품", "건강한 라이프스타일", "직장인 간식"],
+    contentFields: ["간식·먹방", "육아·가족", "홈카페", "캠핑·여행", "호주 상품", "수입식품 리뷰", "직장인 간식"],
     recommendedChannels: ["Instagram", "TikTok", "YouTube", "Naver Blog"],
     contentIdeas: ["바닐라와 드라이 2종 비교", "홈카페 또는 사무실 간식 콘텐츠"],
     creatorTypes: ["간식·먹방·홈카페 콘텐츠를 만드는 크리에이터", "가족 일상, 캠핑·여행, 직장인 라이프를 다루는 크리에이터", "호주 상품을 자연스럽게 소개할 수 있는 크리에이터"],
     quokkiesDetail: {
       displayName: "쿼키즈 프리미엄 마카다미아",
       englishName: "QUOKKIES PREMIUM MACADAMIA",
-      introduction: "호주산 마카다미아를 통째로 즐길 수 있는 인쉘 마카다미아 스낵입니다.",
+      introduction: "호주산 마카다미아를 껍질째 담아 직접 열어 먹는 재미까지 더한 프리미엄 간식입니다.",
       heroImage: "/images/campaigns/quokkies-macadamia/quokkies-macadamia-hero.webp",
       images: { origin: "/images/campaigns/quokkies-macadamia/quokkies-macadamia-origin.webp", package: "/images/campaigns/quokkies-macadamia/quokkies-macadamia-package.webp", opener: "/images/campaigns/quokkies-macadamia/quokkies-macadamia-opener.webp", size: "/images/campaigns/quokkies-macadamia/quokkies-macadamia-size.webp" },
-      productFacts: [{ label: "원산지", value: "호주" }, { label: "내용량", value: "120g" }, { label: "형태", value: "껍질이 있는 인쉘 마카다미아" }, { label: "패키지", value: "지퍼형 스탠딩 파우치" }, { label: "구성품", value: "마카다미아 오프너" }, { label: "맛", value: "바닐라·드라이 로스티드" }, { label: "배송", value: "무료배송" }, { label: "캠페인 상태", value: "공동구매 제안 가능" }],
-      highlights: [{ title: "호주산 마카다미아", description: "호주에서 생산된 마카다미아를 사용한 스낵" }, { title: "두 가지 맛", description: "달콤한 바닐라 로스티드와 담백한 드라이 로스티드" }, { title: "통째로 즐기는 인쉘 타입", description: "껍질을 직접 열어 먹는 재미를 더한 마카다미아" }, { title: "전용 오프너", description: "껍질의 홈에 끼워 돌려서 열 수 있는 마카다미아 오프너" }, { title: "컬러풀한 쿼카 패키지", description: "초록·주황 컬러와 쿼카 캐릭터를 활용한 눈에 띄는 디자인" }],
-      flavors: [{ name: "바닐라 로스티드", color: "그린", description: "바닐라 풍미를 더한 달콤하고 고소한 마카다미아", ideas: ["디저트 간식", "커피와 함께 먹는 간식", "달콤한 견과류 리뷰", "홈카페 콘텐츠"] }, { name: "드라이 로스티드", color: "오렌지", description: "마카다미아 본연의 고소한 풍미를 즐기기 좋은 로스티드 타입", ideas: ["담백한 간식", "술안주·홈파티", "마카다미아 본연의 맛 비교", "여행·캠핑용 간식"] }],
-      packagePoints: ["지퍼형 밀봉 구조", "빛 노출을 줄이는 불투명 패키지", "세워서 보관하기 편한 파우치", "맛별로 구분되는 초록·주황 컬러", "쿼카 캐릭터를 활용한 재미있는 디자인"],
-      openerSteps: ["마카다미아 껍질의 절개 홈을 찾습니다.", "전용 오프너를 홈에 끼웁니다.", "오프너를 천천히 돌려 껍질을 엽니다."],
-      comparison: [{ label: "포장", general: "일반 포장", quokkies: "지퍼형 스탠딩 파우치" }, { label: "형태", general: "혼합 또는 알맹이형 제품도 있음", quokkies: "껍질이 있는 인쉘 타입" }, { label: "먹는 방식", general: "바로 섭취", quokkies: "오프너로 직접 껍질을 열어 섭취" }, { label: "맛", general: "제품별 상이", quokkies: "바닐라 로스티드·드라이 로스티드" }, { label: "콘텐츠 요소", general: "일반 견과류 리뷰", quokkies: "언박싱·오프너 체험·맛 비교" }],
-      recommendations: ["새로운 수입 간식을 찾는 분", "견과류와 마카다미아를 좋아하는 분", "직접 껍질을 여는 재미를 즐기고 싶은 분", "홈카페·캠핑·홈파티 간식을 찾는 분", "재미있는 패키지의 선물을 찾는 분", "바닐라와 드라이 로스티드 맛을 비교하고 싶은 분", "호주산 식품과 여행 상품에 관심 있는 분"],
-      cautions: ["마카다미아를 포함한 견과류 알레르기가 있는 분은 섭취에 주의해 주세요.", "어린이가 섭취할 때는 보호자의 관찰이 필요합니다.", "껍질은 섭취하지 마세요.", "전용 오프너 사용 시 손이 다치지 않도록 주의해 주세요.", "개봉 후에는 지퍼를 잘 닫고 제품 표시사항에 따라 보관해 주세요.", "정확한 원재료, 알레르기 표시, 소비기한과 보관방법은 실제 제품 포장지를 확인해 주세요."],
-      contentIdeas: ["바닐라와 드라이 로스티드 맛 비교", "전용 오프너로 껍질 열기 챌린지", "쿼카 패키지 언박싱", "평소 먹던 마카다미아와 크기 비교", "홈카페 커피 페어링", "캠핑·홈파티 간식 추천", "호주 여행 기념품·호주 식품 소개", "가족·지인에게 주는 이색 간식 선물"],
-      creatorTypes: ["푸드·먹방", "홈카페·디저트", "캠핑·여행", "호주 생활·여행", "가족 라이프스타일", "간식·수입식품 리뷰", "선물 추천", "캐릭터·귀여운 패키지 콘텐츠"],
-      hooks: ["마카다미아를 이렇게 열어 먹는다고요?", "초록색과 주황색, 어떤 맛이 더 맛있을까요?", "껍질을 여는 순간까지 콘텐츠가 되는 간식", "평소 먹던 마카다미아와 크기부터 비교해봤습니다.", "이 쿼카 패키지 때문에 한 번 더 보게 됩니다."],
-      faqs: [{ question: "바닐라 로스티드와 드라이 로스티드는 어떻게 다른가요?", answer: "바닐라 로스티드는 달콤하고 고소한 바닐라 풍미, 드라이 로스티드는 마카다미아 본연의 고소함을 소개하기 좋은 타입입니다. 자세한 원재료 정보는 실제 제품 표시사항을 확인해 주세요." }, { question: "마카다미아 껍질은 어떻게 여나요?", answer: "껍질의 절개 홈에 전용 오프너를 끼운 뒤 천천히 돌려 엽니다. 무리한 힘을 가하지 말고 손이 다치지 않도록 주의해 주세요." }, { question: "오프너가 함께 제공되나요?", answer: "전용 오프너 제공 여부와 수량은 공동구매 구성에 따라 달라질 수 있으며 진행 전 최종 조건을 안내해드립니다." }, { question: "맛을 섞어 공동구매 구성을 만들 수 있나요?", answer: "바닐라·드라이 혼합 구성은 현재 제안 자료에 포함되어 있습니다. 실제 맛 조합과 수량은 진행 조건을 협의한 뒤 최종 확정합니다." }, { question: "상품 샘플과 콘텐츠 자료가 제공되나요?", answer: "샘플과 상품 자료의 제공 범위는 크리에이터 매칭 후 캠페인 조건에 따라 안내합니다." }, { question: "배송은 누가 담당하나요?", answer: "상품 공급과 소비자 택배 발송은 공급사가 담당하고, 거상커머스가 일정과 운영 커뮤니케이션을 지원합니다." }, { question: "견과류 알레르기가 있어도 섭취할 수 있나요?", answer: "마카다미아를 포함한 견과류 알레르기가 있는 분은 섭취에 주의해야 합니다. 정확한 알레르기 정보는 실제 제품 표시사항을 확인해 주세요." }, { question: "공동구매 가격과 구성은 변경될 수 있나요?", answer: "표시된 가격과 구성은 공동구매 제안 기준입니다. 맛 조합, 오프너 제공 수량, 판매 일정과 세부 조건은 협의 후 최종 확정됩니다." }],
+      productFacts: [{ label: "원산지", value: "호주" }, { label: "내용량", value: "1봉 120g" }, { label: "맛", value: "바닐라 로스티드 / 드라이 로스티드" }, { label: "포장", value: "지퍼형 산패 방지 패키지" }, { label: "특징", value: "껍질째 담은 마카다미아" }, { label: "이용 방법", value: "전용 오프너로 껍질을 열어 섭취" }, { label: "배송", value: "무료배송" }, { label: "캠페인 상태", value: "공동구매 제안 가능" }],
+      highlights: [{ title: "호주산 마카다미아", description: "호주에서 생산된 마카다미아를 사용한 제품" }, { title: "두 가지 맛", description: "바닐라 로스티드와 드라이 로스티드 구성" }, { title: "직접 열어 먹는 재미", description: "전용 오프너로 껍질을 열어 먹는 체험형 간식" }, { title: "120g 지퍼 패키지", description: "보관하기 편리한 재밀봉형 패키지" }, { title: "쿼카 캐릭터 디자인", description: "숏폼과 가족 콘텐츠에 활용하기 좋은 밝은 패키지" }],
+      flavors: [{ name: "바닐라 로스티드", color: "그린", description: "마카다미아의 고소한 맛에 바닐라 풍미를 더한 제품입니다.", ideas: ["달콤한 간식", "디저트와 커피 페어링", "가족 간식", "선물 추천", "패키지 언박싱"] }, { name: "드라이 로스티드", color: "오렌지", description: "마카다미아 본연의 고소한 풍미를 느낄 수 있도록 로스팅한 제품입니다.", ideas: ["담백한 견과 간식", "맥주·와인 안주", "캠핑 간식", "사무실 간식", "맛 비교 콘텐츠"] }],
+      packageColors: ["그린·옐로", "오렌지·화이트"],
+      originRegions: [{ english: "Bundaberg, Queensland", korean: "호주 퀸즐랜드주 번다버그" }, { english: "Byron Bay, New South Wales", korean: "호주 뉴사우스웨일스주 바이런베이" }],
+      nutSize: { range: "24~26mm", comparison: "일반 제품 대비 약 5~10% 큰 크기", sourceNotice: "크기 및 알맹이 비율은 공급사가 제공한 상품자료를 기준으로 작성했으며 원물 특성상 개체별 차이가 있을 수 있습니다." },
+      kernelRatio: "약 35%",
+      packagePoints: ["수분 유입을 줄이는 재밀봉 구조", "빛의 영향을 줄이도록 설계된 불투명 패키지", "먹고 남은 제품을 보관하기 편한 지퍼형 포장", "두 가지 맛을 색상으로 쉽게 구분", "휴대와 선물에 적합한 패키지 디자인"],
+      openerGuide: ["껍질의 절개된 틈을 확인합니다.", "전용 오프너를 틈에 넣습니다.", "오프너를 돌려 껍질을 열고 알맹이를 꺼냅니다."],
+      comparison: [{ label: "원산지", value: "호주" }, { label: "크기", value: "공급 자료 기준 24~26mm" }, { label: "형태", value: "껍질째 담은 마카다미아" }, { label: "패키지", value: "지퍼형 불투명 패키지" }, { label: "오프너", value: "껍질 개봉용 전용 오프너" }, { label: "맛", value: "바닐라 로스티드 / 드라이 로스티드" }, { label: "콘텐츠 요소", value: "직접 열기, 시식, 두 가지 맛 비교" }],
+      recommendations: ["견과류와 고소한 간식을 좋아하는 분", "직접 열어 먹는 재미있는 간식을 찾는 분", "캠핑·여행·사무실 간식을 찾는 분", "호주산 식품과 이색 간식에 관심 있는 분", "선물하기 좋은 패키지를 찾는 분", "아이와 함께 즐길 체험형 간식을 찾는 부모님"],
+      allergyNotice: ["본 제품은 견과류인 마카다미아를 포함한 식품입니다.", "견과류 알레르기가 있는 사람은 섭취에 주의해야 합니다.", "원물 특성상 크기와 모양에 차이가 있을 수 있습니다.", "껍질과 전용 오프너 사용 시 손이 다치지 않도록 주의해 주세요.", "어린이가 오프너를 사용할 경우 보호자가 함께해 주세요.", "원재료, 소비기한, 보관방법과 제조·수입원 정보는 실제 제품 표시사항을 확인해 주세요.", "상세 표시사항은 공급사 확인 후 업데이트 예정입니다."],
+      contentIdeas: ["껍질째 마카다미아 직접 열어보기", "바닐라와 드라이 로스티드 맛 비교", "알맹이 크기 측정 챌린지", "쿼카 캐릭터 패키지 언박싱", "커피·맥주·와인과 페어링", "캠핑과 여행용 간식", "아이와 함께 오프너 사용해보기", "호주에서 온 이색 간식 소개"],
+      creatorTypes: ["푸드·먹방 크리에이터", "육아·가족 콘텐츠", "캠핑·여행 콘텐츠", "홈카페·커피 콘텐츠", "와인·맥주·안주 콘텐츠", "호주 여행 및 호주 생활 콘텐츠", "선물 추천 콘텐츠", "재미있는 숏폼 콘텐츠"],
+      hooks: ["마카다미아를 망치 없이 이렇게 연다고요?", "초록색과 주황색, 어떤 맛이 더 맛있을까요?", "이렇게 큰 마카다미아는 처음 봤습니다.", "껍질을 직접 열어 먹는 호주 간식", "귀여운 쿼카가 들고 있는 진짜 마카다미아"],
+      faqs: [{ question: "바닐라 로스티드와 드라이 로스티드는 어떻게 다른가요?", answer: "바닐라 로스티드는 마카다미아의 고소한 맛에 바닐라 풍미를 더한 제품이며, 드라이 로스티드는 마카다미아 본연의 고소한 풍미를 느끼기 좋게 로스팅한 제품입니다." }, { question: "한 봉의 내용량은 얼마인가요?", answer: "한 봉의 내용량은 120g입니다." }, { question: "마카다미아 껍질은 어떻게 여나요?", answer: "껍질의 절개된 틈에 전용 오프너를 넣고 천천히 돌려 껍질을 연 뒤 알맹이를 꺼냅니다." }, { question: "전용 오프너가 함께 제공되나요?", answer: "전용 오프너 제공 여부와 수량은 실제 공동구매 구성 협의 후 확정됩니다." }, { question: "견과류 알레르기가 있어도 먹을 수 있나요?", answer: "마카다미아는 견과류입니다. 견과류 알레르기가 있는 분은 섭취를 피하거나 제품 표시사항을 확인한 후 전문가와 상담해 주세요." }, { question: "맛을 섞어서 공동구매할 수 있나요?", answer: "현재 제안 자료에는 바닐라·드라이 혼합 구성이 포함되어 있습니다. 실제 맛 조합과 수량은 진행 조건을 협의한 뒤 확정합니다." }, { question: "상품 샘플과 콘텐츠 자료가 제공되나요?", answer: "샘플과 상품 자료의 제공 범위는 크리에이터 매칭 후 캠페인 조건에 따라 안내합니다." }, { question: "배송은 누가 담당하나요?", answer: "상품 공급과 소비자 택배 발송은 공급사가 담당하고, 거상커머스가 일정과 운영 커뮤니케이션을 지원합니다." }],
       supportItems: ["상품과 채널 적합성 확인", "맛과 판매 구성 협의", "캠페인 일정 조율", "콘텐츠 기획자료 안내", "공급 및 배송 커뮤니케이션", "판매 현황 확인 지원", "정산 일정 안내"],
-      supportNote: "상품 공급과 택배 발송은 공급사가 담당하고, 거상커머스는 인플루언서 매칭, 판매 구성 조율, 콘텐츠 안내 및 운영 커뮤니케이션을 지원합니다.",
-      finalCta: { title: "쿼키즈와 재미있는 공동구매 콘텐츠를 만들어보세요", description: "채널과 콘텐츠 성향을 검토한 후 맛 구성, 공동구매 조건과 진행 가능 일정을 안내해드립니다.", button: "쿼키즈 상품 제안받기" }
+      supportNote: "상품 공급과 택배 발송은 공급사가 담당하고, 거상커머스는 인플루언서 매칭, 캠페인 조율, 콘텐츠 안내 및 운영 커뮤니케이션을 지원합니다.",
+      finalCta: { title: "재미있는 푸드 콘텐츠와 잘 맞는다면 제안을 받아보세요", description: "채널과 콘텐츠 성향을 검토한 후 맛 구성, 공동구매 조건과 진행 가능 일정을 안내해드립니다.", button: "쿼키즈 마카다미아 제안받기" }
     },
   },
 ];
