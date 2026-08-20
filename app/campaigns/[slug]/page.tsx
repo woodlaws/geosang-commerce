@@ -5,6 +5,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { ProcessTimeline } from "@/components/ProcessTimeline";
 import { CampaignAnalytics } from "@/components/CampaignAnalytics";
 import { TrackedLink } from "@/components/TrackedLink";
+import { Manuka800CampaignDetail } from "@/components/Manuka800CampaignDetail";
 import { campaigns, discountRate, getCampaign, won } from "@/data/campaigns";
 import { absoluteUrl, siteConfig } from "@/data/site";
 
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 export default async function CampaignDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const item = getCampaign(slug); if (!item) notFound(); const lead = item.variants[0]; const hasOnlineLowest = item.variants.some((variant) => variant.onlineLowestPrice);
-  const faq = [
+  const faq = item.detail?.faqs || [
     { question: "제안가는 누구나 바로 구매할 수 있는 가격인가요?", answer: "표시된 금액은 공동구매 진행을 위한 제안 기준입니다. 실제 판매 일정과 조건은 캠페인 협의 후 확정됩니다." },
     { question: "상품 샘플과 콘텐츠 자료가 제공되나요?", answer: "제공 범위는 매칭 후 캠페인 조건에 따라 안내합니다. 확인되지 않은 제공 항목은 사전에 확정하지 않습니다." },
     { question: "배송은 누가 담당하나요?", answer: `${item.name} 캠페인은 현재 가격 제안 자료상 ${item.shipping}으로 안내되어 있으며 상품 출고는 공급사가 담당합니다.` },
@@ -27,9 +28,10 @@ export default async function CampaignDetail({ params }: { params: Promise<{ slu
   const campaignUrl = absoluteUrl(`/campaigns/${item.slug}`);
   const jsonLd = { "@context":"https://schema.org", "@graph":[
     { "@type":"BreadcrumbList", "@id":`${campaignUrl}#breadcrumb`, itemListElement:[{ "@type":"ListItem", position:1, name:"홈", item:absoluteUrl("/") },{ "@type":"ListItem", position:2, name:"캠페인", item:absoluteUrl("/campaigns") },{ "@type":"ListItem", position:3, name:item.name, item:campaignUrl }] },
-    { "@type":"Product", "@id":`${campaignUrl}#product`, name:item.name, brand:{"@type":"Brand",name:item.brand}, category:item.category, countryOfOrigin:item.origin?{"@type":"Country",name:item.origin}:undefined, description:item.seoDescription||`${item.brand} ${item.name} 공동구매 캠페인`, image:item.image?[absoluteUrl(item.image)]:undefined, url:campaignUrl, offers:item.variants.map((variant)=>({"@type":"Offer",name:variant.composition,price:variant.offerPrice,priceCurrency:"KRW",availability:"https://schema.org/InStock",url:campaignUrl})) },
+    { "@type":"Product", "@id":`${campaignUrl}#product`, name:item.name, brand:{"@type":"Brand",name:item.brand}, category:item.category, countryOfOrigin:item.origin?{"@type":"Country",name:item.origin}:undefined, description:item.seoDescription||`${item.brand} ${item.name} 공동구매 캠페인`, image:item.image?[absoluteUrl(item.image)]:undefined, url:campaignUrl, offers:item.variants.map((variant)=>({"@type":"Offer",name:variant.composition,price:variant.offerPrice,priceCurrency:"KRW",url:campaignUrl,...(item.status === "준비 중" ? {} : { availability:"https://schema.org/InStock" })})) },
     { "@type":"FAQPage", "@id":`${campaignUrl}#faq`, url:campaignUrl, mainEntity:faq.map((entry)=>({"@type":"Question",name:entry.question,acceptedAnswer:{"@type":"Answer",text:entry.answer}})) },
   ] };
+  if (item.detail) return <><CampaignAnalytics slug={item.slug} name={item.name}/><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /><Manuka800CampaignDetail item={item}/></>;
   return <main><CampaignAnalytics slug={item.slug} name={item.name}/><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /><section className="product-landing shell"><div className={`detail-image ${item.image ? item.imageTreatment || "product" : "placeholder"}`}>{item.image ? <Image src={item.image} alt={item.imageAlt || item.name} width={820} height={760} priority className="contain-image"/> : <div className="placeholder-art"><span>Q</span><strong>QUOKKIES</strong><small>상품 이미지 준비 중</small></div>}</div><div className="detail-copy"><span className="brand-label">{item.brand} · {item.category}{item.origin ? ` · ${item.origin}` : ""}</span><h1>{item.name}</h1><div className="status-line"><span className="status live">{item.status === "제안 가능" ? "공동구매 제안 가능" : item.status}</span><span>{item.shipping}</span></div><p className="lead-composition">대표 구성 · {lead.composition}</p><div className="detail-price"><span>{discountRate(lead.regularPrice,lead.offerPrice)}%</span><strong>{won(lead.offerPrice)}</strong><del>{won(lead.regularPrice)}</del></div><p className="price-note">공동구매 제안 기준가이며 실제 진행 조건은 협의 후 확정됩니다.</p><div className="feature-bullets">{item.features.map((feature) => <span key={feature}>✓ {feature}</span>)}</div><TrackedLink href={`/creators?campaign=${item.slug}#apply`} analyticsEvent="click_creator_apply" analyticsData={{campaign_slug:item.slug}} className="gradient-button wide">이 상품 제안받기</TrackedLink></div></section>
   {item.flavors?.length ? <section className="flavor-section shell section-gap"><div className="center-head"><span className="eyebrow">TWO FLAVORS</span><h2>바닐라·드라이 2종을 한 번에</h2><p>초록색 바닐라 로스티드와 주황색 드라이 로스티드 패키지를 콘텐츠 콘셉트에 맞춰 소개할 수 있습니다.</p></div><div className="flavor-grid">{item.flavors.map((flavor, index) => <article key={flavor.name} className={index === 0 ? "vanilla" : "dry"}><span>{String(index + 1).padStart(2, "0")}</span><h3>{flavor.name}</h3><p>{flavor.description}</p></article>)}</div></section> : null}
   <section className="soft-section section-gap"><div className="shell split-info"><div><span className="eyebrow">CONTENT FIT</span><h2>추천 콘텐츠 분야</h2>{item.contentFields.map((field) => <span className="pill" key={field}>{field}</span>)}</div><div><span className="eyebrow">CREATOR FIT</span><h2>추천 인플루언서 유형</h2>{item.creatorTypes.map((type) => <p key={type}>• {type}</p>)}</div></div></section>
