@@ -8,10 +8,10 @@ export const absoluteUrl = (path = "/") => new URL(path, `${SITE_URL}/`).toStrin
 export const siteConfig = {
   name: "거상커머스",
   englishName: "GEOSANG COMMERCE",
-  description: "거상커머스는 브랜드와 인플루언서를 연결해 공동구매 캠페인을 기획·운영하는 인플루언서 공동구매 플랫폼입니다.",
-  serviceDescription: "브랜드와 인플루언서를 연결하는 공동구매 플랫폼",
-  slogan: "실제 공급 가능한 상품과 체계적인 공동구매 운영 지원",
-  operatorNotice: "거상커머스는 거상마케팅센터가 운영하는 공동구매 플랫폼입니다.",
+  description: "거상커머스는 호주 프리미엄 상품을 발굴하고 한국 인플루언서와 연결해 공동구매 상품 매칭, 콘텐츠 안내와 캠페인 운영을 지원합니다.",
+  serviceDescription: "거상커머스는 호주 프리미엄 상품과 한국 인플루언서를 연결하는 공동구매 플랫폼입니다.",
+  slogan: "호주에서 찾은 좋은 제품을 한국 크리에이터의 콘텐츠와 연결합니다.",
+  operatorNotice: "상품 공급과 택배 발송은 공급사가 담당하며, 거상커머스는 상품 매칭과 공동구매 운영을 지원합니다.",
   url: SITE_URL,
   logo: "/images/brand/geosang-commerce-logo.png",
   company: process.env.NEXT_PUBLIC_OPERATOR_COMPANY || "",
@@ -34,7 +34,7 @@ export function createPageMetadata(title: string, description: string, path: str
     title: { absolute: fullTitle },
     description,
     alternates: { canonical: url },
-    openGraph: { title: fullTitle, description, url, siteName: siteConfig.name, locale: "ko_KR", type: "website", images: [{ url: image, width: 1729, height: 910, alt: "거상커머스 · GEOSANG COMMERCE" }] },
+    openGraph: { title: fullTitle, description, url, siteName: siteConfig.name, locale: "ko_KR", type: "website", images: [{ url: image, width: 1200, height: 630, alt: "거상커머스 호주 프리미엄 상품 컬렉션" }] },
     twitter: { card: "summary_large_image", title: fullTitle, description, images: [image] },
   };
 }

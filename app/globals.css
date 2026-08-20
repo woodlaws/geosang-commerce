@@ -913,5 +913,214 @@ button,a { -webkit-tap-highlight-color:transparent; }
 @media (max-width:560px) {
   .quokkies-image-text h2 { font-size:clamp(1.8rem,9vw,2.5rem); }
   .quokkies-image-text p,.quokkies-image-text li { font-size:1rem; }
-  .quokkies-table-wrap table { min-width:480px; }
+.quokkies-table-wrap table { min-width:480px; }
+}
+
+/* Australian premium commerce design system */
+:root {
+  --ocean:#0967c2;
+  --ocean-deep:#07549e;
+  --eucalyptus:#2f6b4f;
+  --cream:#f8f5ec;
+  --sand:#e8d8bb;
+  --honey:#d99a24;
+  --sunset:#f47a32;
+  --charcoal:#20272b;
+  --sky:#eaf5f8;
+  --au-line:#dce4df;
+  --ink:var(--charcoal);
+  --muted:#5f696d;
+  --geosang-blue:var(--ocean);
+  --pink:var(--ocean);
+  --purple:var(--eucalyptus);
+  --orange:var(--sunset);
+  --gold:var(--honey);
+  --line:var(--au-line);
+}
+body { color:var(--charcoal); background:#fffdf8; }
+.notice { min-height:36px; padding:8px 20px; display:flex; align-items:center; justify-content:center; gap:18px; background:var(--eucalyptus); font-size:12px; }
+.notice strong { font-weight:750; }
+.notice small { opacity:.74; font-size:9px; font-weight:800; letter-spacing:.13em; }
+.site-header-wrap { background:#fffdf8ed; border-color:#dce4df; backdrop-filter:blur(18px); }
+.site-header { max-width:1560px; height:82px; }
+.site-header nav { gap:20px; color:#293338; font-size:16px; font-weight:750; }
+.site-header nav a:hover,.site-header nav a.active { color:var(--ocean); }
+.header-cta .outline-button { display:inline-flex; }
+.gradient-button { background:var(--ocean); box-shadow:0 10px 24px #0967c226; }
+.gradient-button:hover { box-shadow:0 14px 28px #0967c238; }
+.outline-button { border-color:#b9cfca; background:#fffdf8; }
+:focus-visible { outline-color:#0967c26b; }
+.eyebrow,.brand-label,.section-head>a,.feature-grid article span,.team-grid article>div:last-child>span,.faq-all-link { color:var(--eucalyptus); }
+.status.live { background:var(--eucalyptus); }
+.campaign-image { background:var(--cream); }
+.campaign-card { border-color:var(--au-line); box-shadow:0 16px 45px #17372b0b; }
+.campaign-card:hover { box-shadow:0 22px 52px #17372b17; }
+.price-row .discount { color:var(--sunset); }
+.tag-row span,.pill { color:#285b45; background:#eef6f1; }
+.soft-section { background:var(--cream); }
+.feature-grid article,.team-grid article { border-color:var(--au-line); }
+.team-section { background:linear-gradient(135deg,var(--sky),var(--cream)); }
+.profile-ring { background:linear-gradient(135deg,var(--ocean),var(--eucalyptus),var(--honey)); }
+.cta-section { background:linear-gradient(120deg,var(--ocean-deep),var(--ocean)); }
+.cta-section.gold { background:linear-gradient(120deg,#205a43,var(--eucalyptus)); }
+
+/* Header/footer connective treatment across routes */
+.footer { color:#fff; background:#063e58; border:0; }
+.footer-grid p,.footer-grid a,.footer-grid span,.footer-brand>small { color:#d6e4e8; }
+.footer-grid a:hover { color:#fff; }
+.footer-brand .brand-logo { background:#fff; }
+.footer-brand>b { max-width:320px; margin-top:9px; color:#91c9d8; font-size:9px; line-height:1.6; letter-spacing:.13em; }
+.contact-card { border-color:#ffffff22; background:#ffffff0a; }
+.copyright { color:#b8cbd0; border-color:#ffffff18; }
+
+/* Homepage */
+.australia-home { overflow:hidden; background:#fffdf8; }
+.au-hero { position:relative; padding:78px 0 0; background:radial-gradient(circle at 78% 20%,#eaf5f8 0,transparent 31%),linear-gradient(145deg,#fffdf8,#f8f5ec); }
+.au-hero::before { content:""; position:absolute; width:520px; height:430px; top:110px; right:7%; border:1px solid #2f6b4f1f; border-radius:45% 55% 52% 48% / 42% 40% 60% 58%; transform:rotate(-10deg); }
+.au-hero-grid { min-height:650px; display:grid; grid-template-columns:minmax(0,.92fr) minmax(520px,1.08fr); align-items:center; gap:50px; }
+.au-kicker { display:block; margin-bottom:18px; color:var(--eucalyptus); font-size:11px; font-weight:900; letter-spacing:.14em; }
+.au-hero h1 { margin:0; font-size:clamp(48px,4.7vw,70px); line-height:1.08; letter-spacing:-.058em; word-break:keep-all; }
+.au-hero h1 em { display:inline-block; color:var(--eucalyptus); font-style:normal; }
+.au-hero h1 strong { color:var(--ocean); }
+.au-hero-lead { max-width:650px; margin:28px 0 14px; font-size:18px; line-height:1.75; }
+.au-role-note { max-width:650px; margin:0; padding:16px 18px; color:#4d5b60; border-left:3px solid var(--honey); background:#ffffffa8; font-size:13px; line-height:1.7; }
+.au-hero-actions { margin-top:28px; display:flex; flex-wrap:wrap; gap:10px; }
+.au-button { min-height:52px; padding:0 22px; display:inline-flex; align-items:center; justify-content:center; border-radius:12px; font-weight:850; transition:transform .2s ease,box-shadow .2s ease; }
+.au-button:hover { transform:translateY(-2px); }
+.au-button.primary { color:#fff; background:var(--ocean); box-shadow:0 12px 28px #0967c228; }
+.au-button.secondary { color:#214c3a; border:1px solid #9dbcb0; background:#fff; }
+.au-text-link { width:max-content; margin-top:18px; display:inline-flex; gap:10px; color:var(--eucalyptus); font-weight:850; }
+.au-collection { position:relative; min-height:570px; }
+.au-collection::before { content:""; position:absolute; inset:8% 2% 3%; border-radius:50%; background:radial-gradient(circle at 50% 46%,#fff 0 55%,#e8d8bb7a 56% 59%,transparent 60%); }
+.au-collection::after { content:""; position:absolute; inset:20% 8%; opacity:.2; background-image:linear-gradient(30deg,#2f6b4f 12%,transparent 12.5%,transparent 87%,#2f6b4f 87.5%),linear-gradient(150deg,#2f6b4f 12%,transparent 12.5%,transparent 87%,#2f6b4f 87.5%); background-size:46px 80px; mask-image:radial-gradient(circle at center,#000,transparent 68%); }
+.au-map-label { position:absolute; z-index:4; top:4%; right:3%; padding:9px 12px; color:#fff; border-radius:999px; background:var(--eucalyptus); font-size:9px; font-weight:900; letter-spacing:.11em; }
+.au-product-card { position:absolute; z-index:2; overflow:hidden; border:1px solid #fff; border-radius:24px; background:var(--cream); box-shadow:0 20px 45px #20372c1a; }
+.au-product-card img { padding:10px; object-fit:contain; }
+.au-product-card small { position:absolute; z-index:2; left:12px; bottom:10px; padding:6px 8px; color:#254d3d; border:1px solid #d8e5df; border-radius:99px; background:#ffffffea; font-size:8px; font-weight:900; letter-spacing:.08em; }
+.au-manuka300 { width:52%; height:48%; left:23%; top:10%; z-index:3; }
+.au-manuka800 { width:39%; height:34%; right:0; top:19%; }
+.au-propolis { width:39%; height:34%; left:1%; bottom:8%; }
+.au-quokkies { width:52%; height:36%; right:2%; bottom:1%; z-index:3; }
+.au-quokkies img { object-fit:cover; padding:0; }
+.au-trust-row { min-height:96px; display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid #d7e2dd; }
+.au-trust-row>div { padding:24px; display:flex; align-items:center; gap:14px; border-right:1px solid #d7e2dd; }
+.au-trust-row>div:last-child { border-right:0; }
+.au-trust-row span { color:var(--honey); font-size:10px; font-weight:900; }
+.au-trust-row strong { font-size:13px; line-height:1.4; }
+.au-section { margin-top:130px; margin-bottom:130px; }
+.au-section-heading { max-width:760px; margin-bottom:42px; }
+.au-section-heading.centered { margin-inline:auto; text-align:center; }
+.au-section-heading h2,.au-story-grid h2,.au-faq h2 { margin:0; font-size:clamp(36px,4.3vw,56px); line-height:1.12; letter-spacing:-.05em; word-break:keep-all; }
+.au-section-heading p,.au-story-grid>div>p,.au-faq>div>p { color:var(--muted); font-size:16px; line-height:1.75; }
+.au-product-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; }
+.au-campaign-card { min-width:0; overflow:hidden; border:1px solid var(--au-line); border-radius:22px; background:#fff; box-shadow:0 16px 42px #17372b0b; transition:transform .25s ease,box-shadow .25s ease; }
+.au-campaign-card:hover { transform:translateY(-6px); box-shadow:0 22px 48px #17372b19; }
+.au-campaign-image { position:relative; aspect-ratio:1/1; overflow:hidden; background:var(--cream); }
+.au-campaign-image img { object-fit:contain; transition:transform .3s ease; }
+.au-campaign-card:last-child .au-campaign-image img { object-fit:cover; }
+.au-campaign-card:hover img { transform:scale(1.025); }
+.au-campaign-card>div:last-child { padding:23px; }
+.au-campaign-card span { color:var(--eucalyptus); font-size:9px; font-weight:900; letter-spacing:.12em; }
+.au-campaign-card h3 { min-height:54px; margin:9px 0; font-size:20px; line-height:1.35; letter-spacing:-.03em; }
+.au-campaign-card p { min-height:66px; margin:0 0 20px; color:var(--muted); font-size:13px; line-height:1.65; }
+.au-campaign-card strong { color:var(--ocean); font-size:12px; }
+.au-campaign-card strong b { margin-left:7px; }
+.au-australia-story { padding:110px 0; background:var(--sky); }
+.au-story-grid { display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:70px; }
+.au-story-image { position:relative; min-height:580px; overflow:hidden; border-radius:30px; box-shadow:0 28px 70px #16485b1c; }
+.au-story-image img { object-fit:cover; }
+.au-story-points { margin:30px 0; padding:0; display:grid; list-style:none; }
+.au-story-points li { padding:18px 0; display:grid; gap:7px; border-bottom:1px solid #bdd3d8; }
+.au-story-points strong { color:#285b45; font-size:17px; }
+.au-story-points span { color:#58676c; font-size:13px; line-height:1.65; }
+.au-role-flow ol { margin:0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); list-style:none; }
+.au-role-flow li { position:relative; min-height:245px; padding:38px 32px; border:1px solid var(--au-line); background:#fff; }
+.au-role-flow li:first-child { border-radius:24px 0 0 24px; }
+.au-role-flow li:last-child { border-radius:0 24px 24px 0; }
+.au-role-flow li:not(:last-child)::after { content:"→"; position:absolute; z-index:2; top:50%; right:-15px; width:30px; height:30px; display:grid; place-items:center; transform:translateY(-50%); color:#fff; border-radius:50%; background:var(--eucalyptus); }
+.au-role-flow li>span { color:var(--honey); font-size:12px; font-weight:900; }
+.au-role-flow h3 { margin:45px 0 12px; font-size:23px; letter-spacing:-.03em; }
+.au-role-flow p { margin:0; color:var(--muted); line-height:1.7; }
+.au-dual-cta { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.au-dual-cta article { min-height:380px; padding:48px; display:flex; flex-direction:column; align-items:flex-start; color:#fff; border-radius:28px; }
+.au-dual-cta .creator { background:linear-gradient(145deg,var(--ocean-deep),var(--ocean)); }
+.au-dual-cta .brand { background:linear-gradient(145deg,#214d39,var(--eucalyptus)); }
+.au-dual-cta article>span { font-size:10px; font-weight:900; letter-spacing:.14em; opacity:.78; }
+.au-dual-cta h2 { max-width:500px; margin:42px 0 14px; font-size:clamp(29px,3.3vw,42px); line-height:1.17; letter-spacing:-.045em; }
+.au-dual-cta p { max-width:500px; margin:0 0 28px; opacity:.82; line-height:1.7; }
+.au-light-button { min-height:50px; margin-top:auto; padding:0 18px; display:inline-flex; align-items:center; gap:18px; color:var(--charcoal); border-radius:11px; background:#fff; font-weight:850; }
+.au-faq { display:grid; grid-template-columns:.75fr 1.25fr; gap:75px; align-items:start; }
+
+/* Reusable page surfaces */
+.page-hero,.about-hero,.creator-hero,.brand-hero { background:radial-gradient(circle at 85% 18%,#eaf5f8,transparent 31%),linear-gradient(145deg,#fffdf8,#f8f5ec); }
+.about-hero-copy h1 em { background:none; color:var(--eucalyptus); }
+.about-ecosystem { background:var(--cream); }
+.about-capabilities { background:#123d35; }
+.about-final-cta,.creator-final-cta,.brand-final-cta { background:linear-gradient(115deg,var(--ocean-deep),var(--eucalyptus)); }
+.capability-grid span,.ecosystem-card>span,.leader-profile span,.instagram-meta span { color:#69aecf; }
+.commerce-process li>span { background:var(--eucalyptus); }
+.about-origin-copy blockquote { color:#285b45; border-color:var(--eucalyptus); background:#eef6f1; }
+.mgo800-comparison-layout>div { min-width:0; }
+.mgo800-table-wrap { width:100%; max-width:100%; }
+.mgo800-grade-table { width:100%; max-width:850px; }
+
+@media (max-width:1100px) {
+  .site-header nav { gap:13px; font-size:14px; }
+  .header-cta .compact { padding-inline:13px; font-size:12px; }
+  .au-hero-grid { grid-template-columns:1fr 1fr; gap:25px; }
+  .au-product-grid { grid-template-columns:repeat(2,1fr); }
+  .au-campaign-card h3,.au-campaign-card p { min-height:0; }
+}
+@media (max-width:900px) {
+  .notice small { display:none; }
+  .au-hero { padding-top:65px; }
+  .au-hero-grid { grid-template-columns:1fr; }
+  .au-collection { min-height:560px; max-width:680px; width:100%; margin:15px auto 0; }
+  .au-trust-row { grid-template-columns:repeat(2,1fr); }
+  .au-trust-row>div:nth-child(2) { border-right:0; }
+  .au-trust-row>div:nth-child(-n+2) { border-bottom:1px solid #d7e2dd; }
+  .au-story-grid,.au-faq { grid-template-columns:1fr; }
+  .au-story-image { min-height:450px; }
+  .au-role-flow ol { grid-template-columns:1fr; gap:14px; }
+  .au-role-flow li,.au-role-flow li:first-child,.au-role-flow li:last-child { min-height:auto; border-radius:20px; }
+  .au-role-flow li:not(:last-child)::after { content:"↓"; top:auto; right:50%; bottom:-22px; transform:translate(50%,0); }
+  .au-role-flow h3 { margin-top:24px; }
+  .au-dual-cta { grid-template-columns:1fr; }
+}
+@media (max-width:560px) {
+  .notice { min-height:34px; padding:7px 12px; font-size:10px; line-height:1.35; }
+  .site-header { height:68px; }
+  .au-hero { padding-top:48px; }
+  .au-hero h1 { font-size:clamp(38px,11vw,52px); }
+  .au-hero-lead { font-size:16px; }
+  .au-role-note { font-size:12px; }
+  .au-hero-actions { flex-direction:column; }
+  .au-hero-actions a { width:100%; }
+  .au-collection { min-height:500px; margin-top:24px; }
+  .au-map-label { top:0; right:0; }
+  .au-manuka300 { width:57%; height:43%; left:0; top:10%; }
+  .au-manuka800 { width:48%; height:36%; right:0; top:12%; }
+  .au-propolis { width:48%; height:36%; left:0; bottom:7%; }
+  .au-quokkies { width:48%; height:36%; right:0; bottom:7%; }
+  .au-product-card { border-radius:18px; }
+  .au-product-card small { left:7px; bottom:7px; font-size:6px; }
+  .au-trust-row>div { min-height:82px; padding:16px 10px; align-items:flex-start; flex-direction:column; gap:6px; }
+  .au-trust-row strong { font-size:11px; }
+  .au-section { margin-top:88px; margin-bottom:88px; }
+  .au-section-heading h2,.au-story-grid h2,.au-faq h2 { font-size:36px; }
+  .au-product-grid { grid-template-columns:1fr; }
+  .au-campaign-image { aspect-ratio:1.15/1; }
+  .au-australia-story { padding:78px 0; }
+  .au-story-grid { gap:38px; }
+  .au-story-image { min-height:330px; border-radius:22px; }
+  .au-role-flow li { padding:28px 24px; }
+  .au-dual-cta article { min-height:350px; padding:34px 26px; border-radius:22px; }
+  .au-dual-cta h2 { margin-top:32px; font-size:31px; }
+}
+@media (min-width:1600px) {
+  .au-hero-grid { min-height:710px; }
+  .shell { width:min(1320px,calc(100% - 72px)); }
+}
+@media (prefers-reduced-motion:reduce) {
+  .au-button,.au-campaign-card,.au-campaign-card img { transition:none!important; }
 }

@@ -14,12 +14,12 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: { default: "거상커머스 | 인플루언서 공동구매 플랫폼", template: "%s | 거상커머스" },
+  title: { default: "호주 상품 공동구매 플랫폼 | 거상커머스", template: "%s | 거상커머스" },
   description: siteConfig.description,
-  keywords: ["인플루언서 공동구매", "공동구매 플랫폼", "브랜드 공동구매 입점", "공동구매 대행", "인플루언서 마케팅", "거상마케팅센터"],
+  keywords: ["호주 상품 공동구매", "인플루언서 공동구매", "공동구매 플랫폼", "호주 프리미엄 상품", "브랜드 공동구매 입점", "거상커머스"],
   alternates: { canonical: absoluteUrl("/") },
-  openGraph: { title: "거상커머스 | 인플루언서 공동구매 플랫폼", description: siteConfig.description, url: absoluteUrl("/"), siteName: siteConfig.name, locale: "ko_KR", type: "website", images: [{ url: absoluteUrl("/og.png"), width: 1729, height: 910, alt: "거상커머스 · GEOSANG COMMERCE" }] },
-  twitter: { card: "summary_large_image", title: "거상커머스 | 인플루언서 공동구매 플랫폼", description: siteConfig.description, images: [absoluteUrl("/og.png")] },
+  openGraph: { title: "호주 상품 공동구매 플랫폼 | 거상커머스", description: siteConfig.description, url: absoluteUrl("/"), siteName: siteConfig.name, locale: "ko_KR", type: "website", images: [{ url: absoluteUrl("/og.png"), width: 1200, height: 630, alt: "거상커머스 호주 프리미엄 상품 컬렉션" }] },
+  twitter: { card: "summary_large_image", title: "호주 상품 공동구매 플랫폼 | 거상커머스", description: siteConfig.description, images: [absoluteUrl("/og.png")] },
   robots: { index: true, follow: true },
   icons: {
     icon: [{ url: absoluteUrl(siteConfig.logo), type: "image/png" }],
