@@ -25,6 +25,7 @@ export type Campaign = {
   variants: CampaignVariant[];
   features: string[];
   contentFields: string[];
+  recommendedChannels?: string[];
   creatorTypes: string[];
 };
 
@@ -46,6 +47,7 @@ export const campaigns: Campaign[] = [
     ],
     features: ["스틱형 개별 포장", "호주 생산 제품", "여러 수량 구성 선택 가능"],
     contentFields: ["푸드 라이프", "일상 루틴", "선물 추천"],
+    recommendedChannels: ["Instagram", "Shorts", "Naver Blog"],
     creatorTypes: ["식품과 라이프스타일 콘텐츠를 만드는 크리에이터", "제품 사용 장면을 자연스럽게 보여줄 수 있는 크리에이터"],
   },
   {
@@ -83,6 +85,7 @@ export const campaigns: Campaign[] = [
     ],
     features: ["스프레이 타입", "휴대 가능한 패키지", "선물백 포함 구성 선택 가능"],
     contentFields: ["라이프스타일", "여행·휴대 아이템", "선물 추천"],
+    recommendedChannels: ["Instagram", "TikTok", "Shorts"],
     creatorTypes: ["일상 속 제품 활용을 보여주는 크리에이터", "간결한 숏폼 제품 소개에 강한 크리에이터"],
   },
   {
@@ -113,6 +116,7 @@ export const campaigns: Campaign[] = [
     ],
     features: ["바닐라·드라이 2종", "120g 개별 패키지", "6개·10개 구성 선택 가능", "호주 원산지", "무료배송"],
     contentFields: ["간식·먹방", "육아·가족", "홈카페", "캠핑·여행", "호주 상품", "건강한 라이프스타일", "직장인 간식"],
+    recommendedChannels: ["Instagram", "TikTok", "YouTube", "Naver Blog"],
     creatorTypes: ["간식·먹방·홈카페 콘텐츠를 만드는 크리에이터", "가족 일상, 캠핑·여행, 직장인 라이프를 다루는 크리에이터", "호주 상품을 자연스럽게 소개할 수 있는 크리에이터"],
   },
 ];
