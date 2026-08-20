@@ -12,7 +12,6 @@ export type AnalyticsEvent =
   | "start_creator_application"
   | "complete_creator_step_1"
   | "complete_creator_step_2"
-  | "select_creator_campaign"
   | "submit_creator_application"
   | "creator_application_error"
   | "view_brand_page"

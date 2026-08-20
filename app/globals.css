@@ -315,6 +315,10 @@ button,a { -webkit-tap-highlight-color:transparent; }
 .process-final-cta h2 { margin:13px 0 12px; font-size:30px; line-height:1.3; letter-spacing:-.04em; }
 .process-final-cta p { min-height:52px; margin:0 0 28px; opacity:.9; line-height:1.7; }
 .process-final-cta .white-button { margin-top:auto; }
+.process-final-cta.unified { grid-template-columns:1fr; }
+.process-final-cta.unified article { background:linear-gradient(130deg,var(--orange),var(--pink),var(--purple)); }
+.process-final-actions { margin-top:auto; display:flex; flex-wrap:wrap; gap:10px; }
+.process-final-actions .white-button { min-width:220px; }
 @media (max-width:900px) {
   .operation-map-grid { grid-template-columns:1fr; gap:20px; }
   .operation-map-grid article:not(:last-child)::after { content:"↓"; top:auto; right:50%; bottom:-20px; transform:translate(50%,50%); }
@@ -354,6 +358,8 @@ button,a { -webkit-tap-highlight-color:transparent; }
   .process-final-cta article { padding:34px 26px; }
   .process-final-cta h2 { font-size:26px; }
   .process-final-cta p { min-height:0; }
+  .process-final-actions { width:100%; flex-direction:column; }
+  .process-final-actions .white-button { width:100%; min-width:0; }
 }
 @media (prefers-reduced-motion:reduce) {
   .checklist-items label { transition:none; }
@@ -515,7 +521,7 @@ button,a { -webkit-tap-highlight-color:transparent; }
 .final-confirmations label:last-child { margin-bottom:0; padding-top:12px; border-top:1px solid var(--line); }
 .final-confirmations small { display:block; margin-top:4px; color:var(--muted); }
 .form-availability { padding:14px; border-radius:11px; color:#795400; background:#fff4d2; font-size:12px; text-align:center; }
-.creator-success-actions { display:grid!important; grid-template-columns:repeat(3,1fr); }
+.creator-success-actions { display:grid!important; grid-template-columns:repeat(2,1fr); }
 .creator-success-actions a { min-width:0; padding:13px 10px; font-size:11px; }
 .faq-all-link { margin-top:15px; display:inline-block; color:var(--purple); font-size:13px; font-weight:850; }
 .creator-seo-copy { margin-top:40px; }

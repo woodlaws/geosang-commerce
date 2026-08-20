@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { campaigns } from "@/data/campaigns";
 import { trackEvent } from "@/lib/analytics";
 
 const channelTypes = ["Instagram", "TikTok", "YouTube", "Shorts", "Naver Blog", "라이브커머스", "기타"];
@@ -32,7 +31,6 @@ export function CreatorQuickCheck() {
 export function CreatorApplication({ formEnabled }: { formEnabled: boolean }) {
   const [step, setStep] = useState(1);
   const [channels, setChannels] = useState<Channel[]>([{ type: "", url: "", primary: true }]);
-  const [campaign, setCampaign] = useState("");
   const [experience, setExperience] = useState("");
   const [state, setState] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -43,12 +41,10 @@ export function CreatorApplication({ formEnabled }: { formEnabled: boolean }) {
   useEffect(() => {
     startedAt.current = Date.now();
     trackEvent("view_creator_page");
-    const slug = new URLSearchParams(window.location.search).get("campaign") || "";
     const form = formRef.current;
     const preventEnter = (event: KeyboardEvent) => { if (event.key === "Enter" && (event.target as HTMLElement).tagName !== "TEXTAREA") event.preventDefault(); };
     form?.addEventListener("keydown", preventEnter);
-    const timer = window.setTimeout(() => { if (campaigns.some((item) => item.slug === slug)) setCampaign(slug); }, 0);
-    return () => { window.clearTimeout(timer); form?.removeEventListener("keydown", preventEnter); };
+    return () => { form?.removeEventListener("keydown", preventEnter); };
   }, []);
 
   function updateChannel(index: number, key: keyof Channel, value: string | boolean) {
@@ -85,15 +81,15 @@ export function CreatorApplication({ formEnabled }: { formEnabled: boolean }) {
       audienceAge: String(data.get("audienceAge") || ""), audienceGender: String(data.get("audienceGender") || ""), audienceInterests: String(data.get("audienceInterests") || "").split(",").map((item) => item.trim()).filter(Boolean),
       contentFormats: data.getAll("contentFormats").map(String), groupBuyExperience: experience, recentCampaignProduct: String(data.get("recentCampaignProduct") || ""),
       recentCampaignChannel: String(data.get("recentCampaignChannel") || ""), recentCampaignUrl: String(data.get("recentCampaignUrl") || ""), preferredCategories: data.getAll("preferredCategories").map(String),
-      campaign, message: String(data.get("message") || ""), privacyConsent: data.has("privacyConsent"), confirmations: ["채널 정보 정확성", "광고·협찬 표시 준수", "매칭 미확정 확인"],
+      message: String(data.get("message") || ""), privacyConsent: data.has("privacyConsent"), confirmations: ["채널 정보 정확성", "광고·협찬 표시 준수", "매칭 미확정 확인"],
       sourcePage: `${url.pathname}${url.search}`, referrer: document.referrer, utmSource: url.searchParams.get("utm_source") || "", utmMedium: url.searchParams.get("utm_medium") || "", utmCampaign: url.searchParams.get("utm_campaign") || "",
       userAgent: navigator.userAgent, formStartedAt: startedAt.current, website: String(data.get("website") || ""),
     };
     try {
       const response = await fetch("/api/creator-applications", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       if (!response.ok) throw new Error(response.status === 409 ? "DUPLICATE" : "SUBMIT_FAILED");
-      form.reset(); setChannels([{ type: "", url: "", primary: true }]); setCampaign(""); setExperience(""); setState("success");
-      trackEvent("submit_creator_application", { campaign_slug: campaign || "none", channel_count: channels.length });
+      form.reset(); setChannels([{ type: "", url: "", primary: true }]); setExperience(""); setState("success");
+      trackEvent("submit_creator_application", { channel_count: channels.length });
       window.dispatchEvent(new Event("creator-application-complete"));
       requestAnimationFrame(() => document.getElementById("creator-success-title")?.focus());
     } catch (error) {
@@ -103,12 +99,12 @@ export function CreatorApplication({ formEnabled }: { formEnabled: boolean }) {
     }
   }
 
-  if (state === "success") return <section id="apply" className="creator-success shell section-gap" aria-live="polite"><div><span>APPLICATION COMPLETE</span><h2 id="creator-success-title" tabIndex={-1}>크리에이터 파트너 등록이 완료되었습니다</h2><p>입력해 주신 채널과 관심 상품을 확인한 뒤 적합한 캠페인이 있을 경우 개별적으로 연락드리겠습니다.</p><div className="creator-success-actions"><Link href="#open-campaigns" className="gradient-button">현재 캠페인 다시 보기</Link><Link href="/process#creator-process" className="outline-button">공동구매 진행 방법 보기</Link><a href="https://www.instagram.com/geosang.bruce/" target="_blank" rel="noopener noreferrer" className="outline-button">Instagram에서 확인하기 ↗</a></div></div></section>;
+  if (state === "success") return <section id="apply" className="creator-success shell section-gap" aria-live="polite"><div><span>APPLICATION COMPLETE</span><h2 id="creator-success-title" tabIndex={-1}>파트너 등록이 완료되었습니다</h2><p>등록해주신 채널과 콘텐츠 성향을 검토한 후 적합한 공동구매 상품이 있을 때 개별적으로 연락드리겠습니다.</p><div className="creator-success-actions"><Link href="/process#creator-process" className="outline-button">공동구매 진행 방법 보기</Link><a href="https://www.instagram.com/geosang.bruce/" target="_blank" rel="noopener noreferrer" className="outline-button">Instagram에서 확인하기 ↗</a></div></div></section>;
 
-  return <section id="apply" className="creator-apply section-gap"><div className="shell creator-apply-inner"><div className="creator-form-intro"><span className="eyebrow">PARTNER REGISTRATION</span><h2>거상커머스 크리에이터 파트너 등록</h2><p>좋은 제품을 내 콘텐츠로 소개하고, 영향력을 판매 수익으로 연결해 보세요. 등록 내용을 바탕으로 채널과 상품의 적합성을 검토합니다.</p><ul><li>팔로워 수만으로 선정하지 않습니다.</li><li>공동구매 경험이 없어도 등록할 수 있습니다.</li><li>지원 즉시 캠페인 진행이 확정되는 것은 아닙니다.</li></ul></div><form ref={formRef} className="creator-form creator-form-three" aria-labelledby="creator-step-title" method="post" onSubmit={submit} noValidate>
+  return <section id="apply" className="creator-apply section-gap"><div className="shell creator-apply-inner"><div className="creator-form-intro"><span className="eyebrow">PARTNER REGISTRATION</span><h2>거상커머스 크리에이터 파트너 등록</h2><p>좋은 제품을 내 콘텐츠로 소개하고, 영향력을 판매 수익으로 연결해 보세요. 등록 내용을 바탕으로 채널과 상품의 적합성을 검토합니다.</p><ul><li>팔로워 수만으로 선정하지 않습니다.</li><li>공동구매 경험이 없어도 등록할 수 있습니다.</li><li>등록 즉시 공동구매 진행이 확정되는 것은 아닙니다.</li></ul></div><form ref={formRef} className="creator-form creator-form-three" aria-labelledby="creator-step-title" method="post" onSubmit={submit} noValidate>
     <input className="hp-field" type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-    <div className="creator-step-nav" aria-label="신청 단계">{["기본정보", "채널정보", "관심 캠페인"].map((label, i) => <span key={label} className={step === i + 1 ? "active" : step > i + 1 ? "done" : ""}><b>{i + 1}</b>{label}</span>)}</div>
-    <div className="creator-step-head"><div><span>STEP {step}</span><h3 id="creator-step-title" tabIndex={-1}>{step === 1 ? "기본정보" : step === 2 ? "채널정보" : "관심 캠페인"}</h3></div><strong>{step} / 3</strong></div><div className="step-progress" aria-hidden="true"><i style={{ width: `${step * 33.333}%` }} /></div>
+    <div className="creator-step-nav" aria-label="신청 단계">{["기본정보", "채널정보", "관심 분야"].map((label, i) => <span key={label} className={step === i + 1 ? "active" : step > i + 1 ? "done" : ""}><b>{i + 1}</b>{label}</span>)}</div>
+    <div className="creator-step-head"><div><span>STEP {step}</span><h3 id="creator-step-title" tabIndex={-1}>{step === 1 ? "기본정보" : step === 2 ? "채널정보" : "관심 분야와 최종 확인"}</h3></div><strong>{step} / 3</strong></div><div className="step-progress" aria-hidden="true"><i style={{ width: `${step * 33.333}%` }} /></div>
 
     <div className={step === 1 ? "creator-step" : "creator-step hidden"} aria-hidden={step !== 1}><div className="form-grid"><label><span>이름 <b>*</b></span><input name="name" autoComplete="name" required maxLength={60} placeholder="이름 입력" /></label><label><span>연락처 <b>*</b></span><input name="phone" type="tel" inputMode="tel" autoComplete="tel" required pattern="[0-9+()\-\s]{7,20}" placeholder="010-0000-0000" /></label><label className="wide-field"><span>이메일 <b>*</b></span><input name="email" type="email" inputMode="email" autoComplete="email" required maxLength={120} placeholder="name@example.com" /></label></div><button type="button" className="gradient-button submit-button" onClick={() => validateStep(2)}>다음 단계</button></div>
 
@@ -125,8 +121,7 @@ export function CreatorApplication({ formEnabled }: { formEnabled: boolean }) {
 
     <div className={step === 3 ? "creator-step" : "creator-step hidden"} aria-hidden={step !== 3}>
       <fieldset className="tag-fieldset"><legend>제안받고 싶은 상품 분야</legend><div>{categoryTags.map((item) => <label key={item}><input type="checkbox" name="preferredCategories" value={item}/><span>{item}</span></label>)}</div></fieldset>
-      <label><span>관심 상품</span><select name="campaign" value={campaign} onChange={(e) => { setCampaign(e.target.value); trackEvent("select_creator_campaign", { campaign_slug: e.target.value || "none" }); }}><option value="">선택 안 함</option>{campaigns.filter((item) => item.status !== "종료").map((item) => <option value={item.slug} key={item.slug}>{item.name}</option>)}</select></label>
-      <label><span>추가 메시지</span><textarea name="message" rows={5} maxLength={1500} placeholder="채널 활동이나 관심 캠페인에 관해 전달할 내용을 입력해 주세요." /></label>
+      <label><span>추가 메시지</span><textarea name="message" rows={5} maxLength={1500} placeholder="채널 활동이나 제안받고 싶은 상품 분야를 알려 주세요." /></label>
       <fieldset className="final-confirmations"><legend>신청 전 최종 확인</legend><label><input type="checkbox" name="confirmationAccuracy" required/><span>입력한 채널 정보가 정확합니다. <b>*</b></span></label><label><input type="checkbox" name="confirmationDisclosure" required/><span>캠페인 진행 시 광고·협찬 표시 기준을 준수하겠습니다. <b>*</b></span></label><label><input type="checkbox" name="confirmationMatching" required/><span>상품과 일정에 따라 매칭이 되지 않을 수 있음을 확인했습니다. <b>*</b></span></label><label><input type="checkbox" name="privacyConsent" required/><span>개인정보 수집 및 이용에 동의합니다. <b>*</b> <Link href="/privacy">개인정보처리방침 보기</Link><small>입력하신 정보는 캠페인 검토와 연락을 위해 사용됩니다.</small></span></label></fieldset>
       {!formEnabled && <p className="form-availability" role="status">현재 온라인 접수 시스템을 준비하고 있습니다.</p>}
       <div className="creator-form-actions"><button type="button" className="outline-button" onClick={() => { setStep(2); setMessage(""); }}>이전 단계</button><button className="gradient-button" disabled={!formEnabled || state === "sending"} type="submit">{!formEnabled ? "접수 준비 중" : state === "sending" ? "접수 중입니다" : "크리에이터 파트너 등록하기"}</button></div>

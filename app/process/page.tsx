@@ -1,8 +1,6 @@
 import Link from "next/link";
-import { CampaignCard } from "@/components/CampaignCard";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { ProcessChecklists } from "@/components/ProcessChecklists";
-import { campaigns } from "@/data/campaigns";
 import { faqItems } from "@/data/faqs";
 import { brandProcess, campaignFlow, creatorProcess, operationRoles, processNotices, responsibilityRows, type ProcessStep } from "@/data/process";
 import { absoluteUrl, createPageMetadata } from "@/data/site";
@@ -17,7 +15,6 @@ function ProcessSteps({ steps, tone }: { steps: ProcessStep[]; tone: "creator" |
 }
 
 export default function ProcessPage() {
-  const featuredCampaigns = campaigns.filter((campaign) => ["manuka-royal-jelly-mgo-300", "gooday-propolis-spray", "quokkies-macadamia"].includes(campaign.slug));
   const relatedFaqIds = ["creator-first-campaign", "operation-samples", "sales-revenue", "sales-customer-service", "sales-settlement"];
   const relatedFaqs = relatedFaqIds.map((id) => faqItems.find((item) => item.id === id)).filter((item) => item !== undefined);
   const processUrl = absoluteUrl("/process");
@@ -39,8 +36,6 @@ export default function ProcessPage() {
 
     <section className="process-track creator-track" id="creator-process"><div className="shell"><div className="process-track-head"><div><span className="eyebrow">FOR CREATORS</span><h2>인플루언서는 콘텐츠와 고객 소통에 집중하세요</h2></div><p>지원부터 상품 매칭, 콘텐츠 제작, 판매와 정산까지 단계별로 안내합니다.</p></div><ProcessSteps steps={creatorProcess} tone="creator" /></div></section>
 
-    <section className="shell process-campaigns section-gap"><div className="section-head"><div><span className="eyebrow">OPEN CAMPAIGNS</span><h2>현재 모집 중인 캠페인</h2><p>공동구매 인플루언서 모집 중인 실제 공급 상품을 확인하고 관심 캠페인에 지원해 보세요.</p></div><Link href="/campaigns">전체 캠페인 보기 →</Link></div><div className="campaign-grid">{featuredCampaigns.map((campaign) => <CampaignCard campaign={campaign} key={campaign.slug} />)}</div></section>
-
     <section className="process-track brand-track" id="brand-process"><div className="shell"><div className="process-track-head"><div><span className="eyebrow">FOR BRANDS</span><h2>브랜드는 좋은 상품과 안정적인 공급에 집중하세요</h2></div><p>브랜드 공동구매 입점 후 상품 검토부터 조건 설계, 인플루언서 매칭, 배송과 정산까지 함께 조율합니다.</p></div><ProcessSteps steps={brandProcess} tone="brand" /></div></section>
 
     <section className="shell responsibility-section section-gap"><div className="center-head"><span className="eyebrow">RESPONSIBILITIES</span><h2>누가 무엇을 담당하나요?</h2><p>각 업무의 주담당과 협의·지원 범위를 진행 전에 명확하게 확인합니다.</p></div><div className="responsibility-table" aria-label="공동구매 업무별 책임표"><div className="responsibility-row responsibility-head"><strong>업무</strong><strong>브랜드·공급사</strong><strong>거상커머스</strong><strong>인플루언서</strong></div>{responsibilityRows.map(([task, brand, geosang, creator]) => <div className="responsibility-row" key={task}><strong>{task}</strong><span data-label="브랜드·공급사">{brand}</span><span data-label="거상커머스">{geosang}</span><span data-label="인플루언서">{creator}</span></div>)}</div></section>
@@ -53,6 +48,6 @@ export default function ProcessPage() {
 
     <section className="shell process-faq section-gap"><div className="faq-wrap"><div><span className="eyebrow">PROCESS FAQ</span><h2>진행 전에 자주 묻는 질문</h2><p>공동구매 운영 방법, 샘플, 배송과 정산 조건을 미리 확인하세요.</p><Link href="/faq" className="outline-button compact">자주 묻는 질문 전체 보기</Link></div><FAQAccordion items={relatedFaqs} /></div></section>
 
-    <section className="shell process-final-cta section-gap" aria-label="공동구매 참여 신청"><article><span>FOR CREATORS</span><h2>콘텐츠로 판매를 시작하고 싶으신가요?</h2><p>현재 제안 가능한 상품을 확인하고 거상커머스 인플루언서로 지원해 보세요.</p><Link className="white-button" href="/creators#apply">인플루언서 지원하기 <b>→</b></Link></article><article><span>FOR BRANDS</span><h2>상품에 맞는 판매 파트너를 찾고 계신가요?</h2><p>상품과 공급 조건을 보내주시면 공동구매 가능성을 검토합니다.</p><Link className="white-button" href="/brands#inquiry">브랜드 입점 문의하기 <b>→</b></Link></article></section>
+    <section className="shell process-final-cta unified section-gap" aria-label="공동구매 시작하기"><article><span>START WITH GEOSANG COMMERCE</span><h2>거상커머스와 공동구매를 시작해보세요</h2><p>인플루언서와 브랜드에 맞는 상품과 협업 방식을 함께 검토합니다.</p><div className="process-final-actions"><Link className="white-button" href="/creators">인플루언서 파트너 등록 <b>→</b></Link><Link className="white-button" href="/brands">브랜드 상품 제안 <b>→</b></Link></div></article></section>
   </main>;
 }
