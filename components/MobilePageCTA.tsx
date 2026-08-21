@@ -28,7 +28,8 @@ export function MobilePageCTA() {
     window.addEventListener("brand-inquiry-complete", hide);
     return () => { window.clearTimeout(resetTimer); observer?.disconnect(); window.removeEventListener("brand-inquiry-complete", hide); };
   }, [pathname]);
-  if (pathname === "/creators") return creatorCtaVisible ? <div className="mobile-bottom-cta"><TrackedLink href="#apply" analyticsEvent="click_creator_apply">인플루언서 파트너 등록</TrackedLink></div> : null;
+  if (pathname === "/creators") return creatorCtaVisible ? <div className="mobile-bottom-cta"><TrackedLink href="#apply" analyticsEvent="click_creator_apply">크리에이터 지원하기</TrackedLink></div> : null;
   if (pathname === "/brands") return brandCtaVisible ? <div className="mobile-bottom-cta"><TrackedLink href="#inquiry" analyticsEvent="click_brand_inquiry">공동구매 상품 제안하기</TrackedLink></div> : null;
+  if (pathname === "/") return <div className="mobile-bottom-cta"><TrackedLink href="/creators#apply" analyticsEvent="click_creator_apply">크리에이터 지원하기</TrackedLink></div>;
   return null;
 }
